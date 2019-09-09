@@ -10,7 +10,7 @@ const getUsers = async () => {
 };
 
 const userService = {
-  getUsers
+  getUsers,
 };
 
 module.exports = userService;

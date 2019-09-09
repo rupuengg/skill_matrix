@@ -1,20 +1,18 @@
 const userModel = require('../models').user;
 
 const getUsers = async () => {
-  return userModel.findAll({});
+  const users = await userModel.findAll({});
+  return users;
 };
 
-// const getUser = async () => {
-//   return userModel.findOne({});
-// };
-
-// {
-//   where: filters
-// }
+const getUserByEmail = async (filters) => {
+  const user = await userModel.findOne(filters);
+  return user;
+};
 
 const userDao = {
   getUsers,
-  // getUser
+  getUserByEmail,
 };
 
 module.exports = userDao;
