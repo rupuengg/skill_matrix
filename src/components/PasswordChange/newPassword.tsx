@@ -1,14 +1,18 @@
+
 import React from 'react';
-import { connect } from 'react-redux';
-import { userLogin } from '../../actions/user.action';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import { userLogin } from '../../actions/user.action';
 
-const Login: React.FC = (props: any) => {
-  const handleLogin = (e: any) => {
+const PasswordChange: React.FC = (props: any) => {
+  const handlePassword = (e: any) => {
     e.preventDefault();
-    props.userLogin('abc@xyz.com', 'password');
+    if (window.confirm("Press a Button")) {
+      alert("Password is update Successfully")
+    } else {
+      alert("Try Again")
+    }
   }
-
   return (
     <div className="bg-gradient-primary">
       <div className="container">
@@ -23,28 +27,27 @@ const Login: React.FC = (props: any) => {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                        <h1 className="h4 text-gray-900 mb-4">Change Your Password</h1>
                       </div>
                       <form className="user">
                         <div className="form-group">
                           <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
                         </div>
                         <div className="form-group">
-                          <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
+                          <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="New Password" />
                         </div>
+                    
                         <div className="form-group">
                           <div className="custom-control custom-checkbox small">
                             <input type="checkbox" className="custom-control-input" id="customCheck" />
-                            <label className="custom-control-label" htmlFor="customCheck">Remember Me</label>
+                            <label className="custom-control-label" htmlFor="customCheck">Show Me</label>
                           </div>
                         </div>
-                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handleLogin}>Login
-                    
-                        </a>
+                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Change Password</a>
                       </form>
                       <hr />
                       <div className="text-center">
-                      <Link to="/PasswordChange">Forget Password</Link>
+                        <Link to="/Login">Login</Link>
                       </div>
                       <div className="text-center">
                       <Link to="/Registration">Create An Account</Link>
@@ -53,10 +56,6 @@ const Login: React.FC = (props: any) => {
                   </div>
                 </div>
               </div>
-
-
-
-
             </div>
           </div>
         </div>
@@ -65,4 +64,4 @@ const Login: React.FC = (props: any) => {
   );
 }
 
-export default connect(null, { userLogin })(Login);
+export default PasswordChange;
