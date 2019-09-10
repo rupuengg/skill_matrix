@@ -8,7 +8,9 @@ import store from '../../helpers/store';
 
 import Login from '../Login';
 import Home from '../Home';
+import PasswordChange from '../PasswordChange/newPassword';
 import { PrivateRoute } from '../Common/PrivateRoute';
+
 
 const App: React.FC = () => {
   return (
@@ -17,6 +19,7 @@ const App: React.FC = () => {
         <div className="App">
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/" component={Home} />
+          <Route exact path="/PasswordChange" component={PasswordChange} />
         </div>
       </Router>
     </Provider>
