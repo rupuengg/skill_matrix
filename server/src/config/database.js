@@ -1,10 +1,10 @@
 module.exports = {
-  server: '192.168.0.120',
-  user: 'sa',
-  password: 'bhavana@2019',
-  database: 'ManageSkills',
+  server: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   options: {
     encrypt: true
   },
-  dialect: 'mssql'
+  dialect: process.env.DB_DIALECT
 };

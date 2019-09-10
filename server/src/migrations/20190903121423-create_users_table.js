@@ -1,4 +1,4 @@
-'use strict';
+
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -16,6 +16,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
+        type: Sequelize.STRING
+      },
+      password: {
         type: Sequelize.STRING
       },
       phone: {
