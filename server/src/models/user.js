@@ -1,5 +1,4 @@
 
-
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     first_name: DataTypes.STRING,
@@ -13,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
   // Associate to other tables
   user.associate = function (models) {
     // associations can be defined here
-    //   User.hasMany(models.user_profiles, {
-    //     foreignKey: 'user_id'
-    //   });
+    // user.hasMany(models.auth, {
+    //   foreignKey: 'user_id'
+    // });
   };
 
   return user;

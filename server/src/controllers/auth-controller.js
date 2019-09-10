@@ -10,8 +10,18 @@ const login = async (req, res) => {
   }
 }
 
+const logout = async (req, res) => {
+  try {
+    const data = await authService.userLogout(req.token);
+    return res.status(OK).json(data);
+  } catch (err) {
+    return res.status(err.status || SERVER_ERROR).json(err);
+  }
+};
+
 const authController = {
-  login
+  login,
+  logout
 };
 
 module.exports = authController;
