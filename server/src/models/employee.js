@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {});
 
-  // Associate to other tables
+  
   employee.associate = function (models) {
     employee.hasMany(models.employee_skills, {
       foreignKey: "employee_id",
