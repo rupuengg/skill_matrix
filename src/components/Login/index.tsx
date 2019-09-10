@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userLogin } from '../../actions/user.action';
+import { Link } from 'react-router-dom';
 
 const Login: React.FC = (props: any) => {
   const handleLogin = (e: any) => {
@@ -37,14 +38,16 @@ const Login: React.FC = (props: any) => {
                             <label className="custom-control-label" htmlFor="customCheck">Remember Me</label>
                           </div>
                         </div>
-                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handleLogin}>Login</a>
+                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handleLogin}>Login
+                    
+                        </a>
                       </form>
                       <hr />
                       <div className="text-center">
-                        <a className="small" href="forgot-password.html">Forgot Password?</a>
+                      <Link to="/PasswordChange">Forget Password</Link>
                       </div>
                       <div className="text-center">
-                        <a className="small" href="register.html">Create an Account!</a>
+                      <Link to="/Registration">Create An Account</Link>
                       </div>
                     </div>
                   </div>

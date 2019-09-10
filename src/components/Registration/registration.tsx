@@ -1,16 +1,13 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { userLogin } from '../../actions/user.action';
 
-const PasswordChange: React.FC = (props: any) => {
-  const handlePassword = (e: any) => {
-    e.preventDefault();
+const Registration: React.FC = (props: any) => {
+  const handlePassword = () => {
     if (window.confirm("Press a Button")) {
-      alert("Password is update Successfully")
+      alert("Your Registered Successfully!")
     } else {
-      alert("Try Again")
+      alert("Retry Again!")
     }
   }
   return (
@@ -27,31 +24,30 @@ const PasswordChange: React.FC = (props: any) => {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Change Your Password</h1>
+                        <h1 className="h4 text-gray-900 mb-4">Create New Account</h1>
                       </div>
                       <form className="user">
+                      <div className="form-group">
+                          <input type="text" className="form-control form-control-user" id="exampleInputEmail"  placeholder="Enter First_Name..." />
+                        </div>
+                        <div className="form-group">
+                          <input type="text" className="form-control form-control-user" id="exampleInputEmail"  placeholder="Enter Last_Name..." />
+                        </div>
                         <div className="form-group">
                           <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
                         </div>
                         <div className="form-group">
-                          <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="New Password" />
+                          <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Enter Password" />
                         </div>
                     
-                        <div className="form-group">
-                          <div className="custom-control custom-checkbox small">
-                            <input type="checkbox" className="custom-control-input" id="customCheck" />
-                            <label className="custom-control-label" htmlFor="customCheck">Show Me</label>
-                          </div>
-                        </div>
-                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Change Password</a>
+                
+                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Registered</a>
                       </form>
                       <hr />
                       <div className="text-center">
                         <Link to="/Login">Login</Link>
                       </div>
-                      <div className="text-center">
-                      <Link to="/Registration">Create An Account</Link>
-                      </div>
+                
                     </div>
                   </div>
                 </div>
@@ -64,4 +60,4 @@ const PasswordChange: React.FC = (props: any) => {
   );
 }
 
-export default PasswordChange;
+export default Registration;
