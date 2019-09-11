@@ -2,9 +2,24 @@ const httpConstant = require('../constants/httpConstant');
 const msgConstant = require('../constants/msgConstant');
 const CustomError = require('../utils/customError');
 const authService = require('../services/auth-service');
+const validator = require('express-validation');
+const lodash = require('lodash');
 const { verifyToken } = require('../utils/common');
 
 module.exports = {
+  catchValidationErrors: (err, req, res, next) => {
+    if (err instanceof validator.ValidationError) {
+      const errorDetails = lodash.map(err.errors, lodash.partialRight(lodash.pick, ['field', 'messages']));
+      const error = new CustomError(err.status, err.message, errorDetails);
+      return res.status(err.status).json(error);
+    }
+    if (err instanceof CustomError) {
+      const error = new CustomError(err.status, err.message, err.errors);
+      // logger.error(err);
+      return res.status(err.status).json(error).end();
+    }
+    return next();
+  },
   authenticate: async (req, res, next) => {
     const token = req.token;
 
