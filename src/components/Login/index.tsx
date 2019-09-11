@@ -89,41 +89,21 @@ class Login extends Component<LoginProps, LoginState> {
                         <div className="text-center">
                           <Link to="/Registration">Create An Account</Link>
                         </div>
-<<<<<<< HEAD
-=======
-                        <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Change Password</a>
-                      </form>
-                      <hr />
-                      <div className="text-center">
-                      <Link to="/PasswordChange">Forget Password</Link>
-                      </div>
-                      <div className="text-center">
-                        <Link to="/Registration">Create An Account</Link>
->>>>>>> aeee8bed1b74926b56bbdb0fd850d001460ea5d8
                       </div>
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> aeee8bed1b74926b56bbdb0fd850d001460ea5d8
               </div>
             </div>
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     );
   }
-=======
-    </div>
-
-  );
->>>>>>> aeee8bed1b74926b56bbdb0fd850d001460ea5d8
 }
 
 
