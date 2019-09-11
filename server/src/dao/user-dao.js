@@ -1,12 +1,21 @@
 const userModel = require('../models').user;
 
-const getUsers = async () => {
-  const users = await userModel.findAll({});
+const sequelize = require('../models').sequelize;
+
+const getUsers = async (filters) => {
+  const users = await userModel.findOne({
+    where: filters
+  });
   return users;
 };
 
-const getUserByEmail = async (filters) => {
-  const user = await userModel.findOne(filters);
+const getUserByEmail = async (email) => {
+  const user = await userModel.findOne({
+    where: sequelize.where(
+      sequelize.fn('lower', sequelize.col('email')),
+      email.toLowerCase()
+    )
+  });
   return user;
 };
 

@@ -1,12 +1,10 @@
 const userDao = require('../dao/user-dao');
 
-const getUsers = async () => {
-  // try {
-  const user = await userDao.getUsers();
+const getUsers = async (user_id) => {
+  const user = await userDao.getUsers({
+    id: user_id
+  });
   return user;
-  // } catch (err) {
-  //   return err
-  // }
 };
 
 const userService = {
