@@ -1,19 +1,19 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { userLogin } from '../../actions/user.action';
+const PasswordChange = () => {
 
-const PasswordChange: React.FC = (props: any) => {
-  const handlePassword = (e: any) => {
-    e.preventDefault();
+  const handlePassword = () => {
     if (window.confirm("Press a Button")) {
-      alert("Password is update Successfully")
+      alert("Check your mail for reset your password ")
     } else {
-      alert("Try Again")
+      alert("Enter valid Email")
     }
+
   }
+
   return (
+
     <div className="bg-gradient-primary">
       <div className="container">
         <div className="row justify-content-center">
@@ -33,16 +33,9 @@ const PasswordChange: React.FC = (props: any) => {
                         <div className="form-group">
                           <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
                         </div>
-                        <div className="form-group">
-                          <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="New Password" />
-                        </div>
-                    
-                        <div className="form-group">
-                          <div className="custom-control custom-checkbox small">
-                            <input type="checkbox" className="custom-control-input" id="customCheck" />
-                            <label className="custom-control-label" htmlFor="customCheck">Show Me</label>
-                          </div>
-                        </div>
+            
+
+                        
                         <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Change Password</a>
                       </form>
                       <hr />
@@ -50,7 +43,7 @@ const PasswordChange: React.FC = (props: any) => {
                         <Link to="/Login">Login</Link>
                       </div>
                       <div className="text-center">
-                      <Link to="/Registration">Create An Account</Link>
+                        <Link to="/Registration">Create An Account</Link>
                       </div>
                     </div>
                   </div>
@@ -61,7 +54,9 @@ const PasswordChange: React.FC = (props: any) => {
         </div>
       </div>
     </div>
+
   );
 }
+
 
 export default PasswordChange;
