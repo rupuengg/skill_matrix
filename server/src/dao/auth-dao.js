@@ -2,9 +2,7 @@ const authModel = require('../models').auth;
 const userModel = require('../models').user;
 
 const createToken = async (data) => {
-  console.log('Res', authModel);
   const result = await authModel.build(data).save();
-  // console.log('Result', result);
   return result;
 };
 

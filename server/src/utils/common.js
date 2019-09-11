@@ -8,5 +8,5 @@ module.exports = {
   verifyToken: async (token) => {
     const user = await jwt.verify(token, process.env.JWT_PRIVATE_KEY);
     return user;
-  },
+  }
 };

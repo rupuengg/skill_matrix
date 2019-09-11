@@ -13,6 +13,7 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   try {
     const data = await authService.userLogout(req.token);
+    console.log('data', data);
     return res.status(OK).json(data);
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);

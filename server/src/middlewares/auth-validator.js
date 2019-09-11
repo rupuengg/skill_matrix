@@ -16,28 +16,28 @@ module.exports = {
     try {
       verifyObj = await verifyToken(token);
     } catch (err) {
-      throw new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN);
+      return next(new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN));
     }
 
     if (!verifyObj) {
-      throw new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN);
+      return next(new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN));
     }
 
     try {
-      const user = await authService.getTotkenWithUser({
+      const auth = await authService.getTotkenWithUser({
         token,
         user_id: verifyObj.id
       });
 
-      if (!user) {
-        throw new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN);
+      if (!auth) {
+        return next(new CustomError(httpConstant.UNAUTHORIZED, msgConstant.INVALID_TOKEN));
       }
 
       req.user = {
-        id: user.user_id,
+        id: auth.user_id,
         verify_token_id: verifyObj.id,
-        email: user.email,
-        data: user
+        email: auth.email,
+        data: auth
       };
 
       return next();
