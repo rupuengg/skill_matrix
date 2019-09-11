@@ -4,6 +4,7 @@ const bearerToken = require('express-bearer-token');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const db = require('./server/src/models');
+const cors = require('cors');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bearerToken());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use(cors());
 
 app.use(compression());
 

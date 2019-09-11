@@ -1,0 +1,6 @@
+.user>.form-group>.error {
+  color: rgb(144, 3, 3);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 0 0 20px;
+}
