@@ -45,7 +45,7 @@ const Login = () => {
                         </div>
                         <div className="form-group">
                           <input type={hidden ? "password" : "text"} className="form-control form-control-user" id="exampleInputPassword" placeholder="Enter Password" />
-                        
+
                         </div>
 
                         <div className="form-group">
@@ -58,7 +58,7 @@ const Login = () => {
                       </form>
                       <hr />
                       <div className="text-center">
-                      <Link to="/PasswordChange">Forget Password</Link>
+                        <Link to="/PasswordChange">Forget Password</Link>
                       </div>
                       <div className="text-center">
                         <Link to="/Registration">Create An Account</Link>

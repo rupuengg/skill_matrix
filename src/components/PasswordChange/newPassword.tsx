@@ -28,6 +28,7 @@ const PasswordChange = () => {
                     <div className="p-5">
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">Change Your Password</h1>
+                        <p>Please provide the Email ID that you have used when you signed up</p>
                       </div>
                       <form className="user">
                         <div className="form-group">
@@ -40,7 +41,7 @@ const PasswordChange = () => {
                       </form>
                       <hr />
                       <div className="text-center">
-                        <Link to="/Login">Login</Link>
+                        <Link to="/Login">Back to Login</Link>
                       </div>
                       <div className="text-center">
                         <Link to="/Registration">Create An Account</Link>
