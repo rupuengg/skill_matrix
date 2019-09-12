@@ -11,6 +11,7 @@ const Registration: React.FC = (props: any) => {
     }
   }
   return (
+
     <div className="bg-gradient-primary">
       <div className="container">
         <div className="row justify-content-center">
