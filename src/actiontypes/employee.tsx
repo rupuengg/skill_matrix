@@ -1,0 +1,2 @@
+export const EMPLOYEE_LIST = 'EMPLOYEE_LIST';
+export const EMPLOYEE_NO_DATA = 'EMPLOYEE_NO_DATA';
