@@ -13,6 +13,10 @@ import { PrivateRoute } from '../Common/PrivateRoute';
 import Registration from '../Registration/registration';
 import Spinner from '../Spinner';
 import { history } from '../../helpers/history';
+// Admin
+import Employee from '../admin/Employee';
+import Dashboard from '../admin/Dashboard';
+import Skills from '../admin/Skills';
 
 
 const App: React.FC = (props: any) => {
@@ -24,6 +28,10 @@ const App: React.FC = (props: any) => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/PasswordChange" component={PasswordChange} />
           <PrivateRoute exact path="/" component={Home} />
+
+          <PrivateRoute exact path="/employee" component={Employee} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/skills" component={Skills} />
           <Spinner />
         </div>
       </Router>

@@ -1,4 +1,5 @@
-.user>.form-group>.error {
+.user>.form-group>.error,
+.main-error {
   color: rgb(144, 3, 3);
   font-size: 12px;
   font-weight: bold;

@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
+import { connect } from 'react-redux';
+import { userLogout } from '../../../actions/user.action';
 
-class Header extends React.Component {
+interface HeaderProps {
+  userLogout: Function
+}
+
+interface HeaderStates {
+  is_profile_show: boolean
+}
+
+class Header extends React.Component<HeaderProps, HeaderStates> {
+  constructor(props: HeaderProps) {
+    super(props);
+
+    this.state = {
+      is_profile_show: false
+    };
+  }
+
+  toggleProfile = (e: FormEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    this.setState({
+      is_profile_show: !this.state.is_profile_show
+    });
+  }
+
+  handleLogout = (e: FormEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    this.props.userLogout();
+  }
+
   render() {
+    const { is_profile_show } = this.state;
+
     return (
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
@@ -136,22 +168,21 @@ class Header extends React.Component {
           <div className="topbar-divider d-none d-sm-block"></div>
 
           <li className="nav-item dropdown no-arrow">
-            <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={this.toggleProfile}>
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
               <img className="img-profile rounded-circle" alt="" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" />
             </a>
-            <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <div className={'dropdown-menu dropdown-menu-right shadow animated--grow-in ' + (is_profile_show ? 'show' : '')} aria-labelledby="userDropdown">
               <a className="dropdown-item" href="/"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</a>
-              {/* <a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>Settings</a>
-              <a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>Activity Log</a> */}
+              <a className="dropdown-item" href="/"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>Activity Log</a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal"><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
+              <a className="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal" onClick={this.handleLogout}><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
             </div>
           </li>
         </ul>
-      </nav>
+      </nav >
     );
   }
 }
 
-export default Header;
+export default connect(null, { userLogout })(Header);
