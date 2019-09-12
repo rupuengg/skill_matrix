@@ -15,7 +15,7 @@ const LoginForm = (props: LoginFormProps) => {
   const { userLogin, err } = props;
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{ email: "admin@yopmail.com", password: "testing" }}
       onSubmit={(values, actions) => {
         userLogin(values.email, values.password)
           .then((res: any) => {

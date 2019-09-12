@@ -1,19 +1,16 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-const PasswordChange = () => {
 
+const PasswordChange = () => {
   const handlePassword = () => {
     if (window.confirm("Press a Button")) {
-      alert("Check your mail for reset your password ")
+      alert("Check your mail for reset your password ");
     } else {
-      alert("Enter valid Email")
+      alert("Enter valid Email");
     }
-
   }
 
   return (
-
     <div className="bg-gradient-primary">
       <div className="container">
         <div className="row justify-content-center">
@@ -23,7 +20,6 @@ const PasswordChange = () => {
                 <div className="row">
                   <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
 
-
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
@@ -31,22 +27,22 @@ const PasswordChange = () => {
                       </div>
                       <form className="user">
                         <div className="form-group">
-                          <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                          <input
+                            type="email"
+                            className="form-control form-control-user"
+                            id="exampleInputEmail"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter Email Address..." />
                         </div>
-            
-
-                        
                         <a href="index.html" className="btn btn-primary btn-user btn-block" onClick={handlePassword}>Change Password</a>
                       </form>
                       <hr />
                       <div className="text-center">
-                        <Link to="/Login">Login</Link>
-                      </div>
-                      <div className="text-center">
-                        <Link to="/Registration">Create An Account</Link>
+                        <Link to="/login">Login</Link>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -54,9 +50,7 @@ const PasswordChange = () => {
         </div>
       </div>
     </div>
-
   );
 }
-
 
 export default PasswordChange;

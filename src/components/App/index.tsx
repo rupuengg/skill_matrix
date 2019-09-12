@@ -10,7 +10,7 @@ import Login from '../Login';
 import Home from '../Home';
 import PasswordChange from '../PasswordChange/newPassword';
 import { PrivateRoute } from '../Common/PrivateRoute';
-import Registration from '../Registration/registration';
+// import Registration from '../Registration/registration';
 import Spinner from '../Spinner';
 import { history } from '../../helpers/history';
 // Admin
@@ -24,7 +24,6 @@ const App: React.FC = (props: any) => {
     <Provider store={store}>
       <Router history={history}>
         <div className="App">
-          <Route exact path="/register" component={Registration} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgot" component={PasswordChange} />
           <PrivateRoute exact path="/" component={Home} />

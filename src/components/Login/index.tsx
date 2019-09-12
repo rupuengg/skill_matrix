@@ -24,9 +24,9 @@ const Login = () => {
                       <div className="text-center">
                         <Link to="/forgot">Forget Password</Link>
                       </div>
-                      <div className="text-center">
+                      {/* <div className="text-center">
                         <Link to="/register">Create An Account</Link>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
