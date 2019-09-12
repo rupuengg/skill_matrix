@@ -1,5 +1,4 @@
 const userModel = require('../models').user;
-
 const sequelize = require('../models').sequelize;
 
 const getUsers = async (filters) => {

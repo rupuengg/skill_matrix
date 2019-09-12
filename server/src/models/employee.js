@@ -1,13 +1,14 @@
-'use strict';
+
 
 module.exports = (sequelize, DataTypes) => {
   const employee = sequelize.define('employee', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING
   }, {});
 
-  
+
   employee.associate = function (models) {
     employee.hasMany(models.employee_skills, {
       foreignKey: "employee_id",
