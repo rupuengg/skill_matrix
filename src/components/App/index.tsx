@@ -24,9 +24,9 @@ const App: React.FC = (props: any) => {
     <Provider store={store}>
       <Router history={history}>
         <div className="App">
-          <Route exact path="/Registration" component={Registration} />
+          <Route exact path="/register" component={Registration} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/PasswordChange" component={PasswordChange} />
+          <Route exact path="/forgot" component={PasswordChange} />
           <PrivateRoute exact path="/" component={Home} />
 
           <PrivateRoute exact path="/employee" component={Employee} />

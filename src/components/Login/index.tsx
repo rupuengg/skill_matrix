@@ -22,10 +22,10 @@ const Login = () => {
                       <LoginForm />
                       <hr />
                       <div className="text-center">
-                        <Link to="/PasswordChange">Forget Password</Link>
+                        <Link to="/forgot">Forget Password</Link>
                       </div>
                       <div className="text-center">
-                        <Link to="/Registration">Create An Account</Link>
+                        <Link to="/register">Create An Account</Link>
                       </div>
                     </div>
                   </div>
