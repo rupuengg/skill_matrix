@@ -25,8 +25,8 @@ const deleteEmployee = async (filters) => {
 }
 
 const updateEmployee = async (data, filters) => {
-  const emp = await employeeModel.update(data, { where: filters }).success();
-  return emp;
+  const emp = await employeeModel.update(data, { where: filters });
+  return emp[0];
 };
 
 const employeeDao = {

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getEmployees } from '../../../actions/employee.action';
 
@@ -14,6 +15,7 @@ const Employee = (props: any) => {
           <a href="/">Employees</a>
         </li> */}
         <li className="breadcrumb-item active">Employees</li>
+        <li className="add-new"><Link to="/employee/create"><span className="fa fa-plus"></span> Add New</Link></li>
       </ol>
       <div className="card mb-3">
         {/* <div className="card-header"><i className="fas fa-table"></i>Data Table Example</div> */}

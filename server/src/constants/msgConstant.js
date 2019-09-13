@@ -5,5 +5,9 @@ module.exports = {
   UNABLE_TO_REMOVE_TOKEN: "Unable to delete token",
   LOGOUT_SUCCESSFULL: "logout successfully",
   ACCESS_TOKEN_MISSING: "Access token missing",
-  INVALID_TOKEN: "Invalid token"
+  INVALID_TOKEN: "Invalid token",
+  EMPLOYEE: {
+    CREATED: "Employee created successfully",
+    UPDATED: "Employee updated successfully"
+  }
 };

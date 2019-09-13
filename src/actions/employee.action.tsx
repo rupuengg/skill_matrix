@@ -20,3 +20,15 @@ export const getEmployees = () => async (dispatch: any) => {
       dispatch({ type: SPINNER_HIDE });
     })
 };
+
+export const createEmployee = (data: any) => async (dispatch: any) => {
+  dispatch({ type: SPINNER_SHOW });
+  await employeeService.createEmployee(data)
+    .then(res => {
+      if (res.status)
+        dispatch({ type: SPINNER_HIDE });
+    })
+    .catch(err => {
+      console.log();
+    })
+};
