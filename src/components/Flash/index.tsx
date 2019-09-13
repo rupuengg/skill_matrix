@@ -8,7 +8,7 @@ const Flash = (props: any) => {
     <div className="alert alert-success" role="alert">
       <h4 className="alert-heading"><i className="fa fa-check"></i> {props.message}</h4>
       {/* <hr /> */}
-      {/* <p className="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> */}
+      {/* <p className="mb-0">Whnever you need to, be sure to use margin utilities to keep things nice and tidy.</p> */}
     </div>
   );
 };
