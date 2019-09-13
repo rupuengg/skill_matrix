@@ -1,8 +1,9 @@
-import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA } from '../actiontypes/employee';
+import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA, EMPLOYEE_ADD } from '../actiontypes/employee';
 
 const initialState = {
   lists: [],
-  noData: {}
+  noData: {},
+  message: ""
 };
 
 export const employeeReducer = (state = initialState, action: any) => {
@@ -10,7 +11,9 @@ export const employeeReducer = (state = initialState, action: any) => {
     case EMPLOYEE_LIST:
       return { ...state, lists: action.payload };
     case EMPLOYEE_NO_DATA:
-      return { ...state, noData: action.payload }
+      return { ...state, noData: action.payload };
+    case EMPLOYEE_ADD:
+      return { ...state, message: action.payload };
     default:
       return { ...state };
   }

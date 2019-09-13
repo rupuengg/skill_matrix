@@ -6,6 +6,7 @@ import { getEmployees } from '../../../actions/employee.action';
 const Employee = (props: any) => {
   useEffect(() => {
     props.getEmployees();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -55,7 +56,7 @@ const Employee = (props: any) => {
                     </thead>
                     <tbody>
                       {props.employees.map((emp: any) => (
-                        <tr className="odd">
+                        <tr className="odd" key={emp.id}>
                           <td className="sorting_1">{emp.first_name}</td>
                           <td>{emp.last_name}</td>
                           <td>{emp.email}</td>

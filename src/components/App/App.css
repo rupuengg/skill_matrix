@@ -26,3 +26,7 @@
 .error-box>.error.show {
   visibility: visible;
 }
+
+.alert .alert-heading{
+  margin-bottom:0px;
+}

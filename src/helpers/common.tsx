@@ -11,35 +11,15 @@ const reqOptions = (url: string, type: string, token: any, body: any = undefined
   let init: {
     method: string,
     headers: Headers,
-    // mode: string,
-    // cache: string,
     body: string
   } = {
     method: type,
     headers: headers,
-    // mode: 'cors',
-    // cache: 'default',
     body: JSON.stringify(body)
   };
 
   // Make Request
   return new Request(url, init);
-
-  // const options: OptionInterface = {
-  //   method,
-  //   headers: {
-  //     "Access-Control-Allow-Origin": "*",
-  //     "Content-type": "application/json; charset=UTF-8",
-  //     "Authorization": `Bearer ${token}`
-  //   },
-  //   mode: 'cors',
-  //   cache: 'default'
-  // };
-
-  // // Set body
-  // if (data) {
-  //   options['body'] = JSON.stringify(data);
-  // }
 };
 
 export {

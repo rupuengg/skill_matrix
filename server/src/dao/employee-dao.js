@@ -6,7 +6,10 @@ const createEmployee = async (data) => {
 };
 
 const getEmployees = async (filters) => {
-  const emps = await employeeModel.findAll({});
+  const emps = await employeeModel.findAll({
+    where: filters,
+    order: [['id', 'DESC']]
+  });
   return emps;
 }
 
