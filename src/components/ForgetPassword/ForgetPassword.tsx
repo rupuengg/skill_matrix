@@ -20,9 +20,6 @@ const ForgetPassword = () => {
                       <div className="text-center">
                         <Link to="/Login">Back to Login</Link>
                       </div>
-                      <div className="text-center">
-                        <Link to="/Registration">Create An Account</Link>
-                      </div>
                     </div>
                   </div>
 

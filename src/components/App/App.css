@@ -1,0 +1,32 @@
+.breadcrumb>.add-new {
+  margin-left: auto;
+}
+
+.user>.form-group>.error,
+.main-error {
+  color: rgb(144, 3, 3);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 0 0 20px;
+}
+
+.error-box {
+  display: block;
+}
+
+.error-box>.error,
+.main-error {
+  color: rgb(144, 3, 3);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 0 0 20px;
+  visibility: hidden;
+}
+
+.error-box>.error.show {
+  visibility: visible;
+}
+
+.alert .alert-heading{
+  margin-bottom:0px;
+}

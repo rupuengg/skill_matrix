@@ -2,15 +2,14 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 
 
+
 const ForgetForm = () => (
     <div>
-        
         <Formik
             initialValues={{
                 email: '',
             }}
             onSubmit={values => {
-                // same shape as initial values
                 console.log(values);
             }}
         >

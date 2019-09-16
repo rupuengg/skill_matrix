@@ -7,14 +7,15 @@ export const userLogin = (email: string, password: string) => async (dispatch: a
   dispatch({ type: SPINNER_SHOW });
   await userService.userAuthentication(email, password)
     .then((res: any) => {
+      console.log('res', res);
       const token = res.data ? res.data.token : null;
       if (token) {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
 
         dispatch({
           type: USER_LOGIN,
-          payload: res.user
+          payload: res.data.user
         });
 
         history.push('/');
