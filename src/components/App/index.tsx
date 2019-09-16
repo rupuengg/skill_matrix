@@ -8,7 +8,6 @@ import store from '../../helpers/store';
 
 import Login from '../Login';
 import Home from '../Home';
-import PasswordChange from '../PasswordChange/newPassword';
 import { PrivateRoute } from '../Common/PrivateRoute';
 import Registration from '../Registration/registration';
 import Spinner from '../Spinner';
@@ -17,7 +16,7 @@ import { history } from '../../helpers/history';
 import Employee from '../admin/Employee';
 import Dashboard from '../admin/Dashboard';
 import Skills from '../admin/Skills';
-
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
 
 const App: React.FC = (props: any) => {
   return (
@@ -26,9 +25,8 @@ const App: React.FC = (props: any) => {
         <div className="App">
           <Route exact path="/register" component={Registration} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/forgot" component={PasswordChange} />
           <PrivateRoute exact path="/" component={Home} />
-
+          <Route exact path="/ForgetPassword" component={ForgetPassword} />
           <PrivateRoute exact path="/employee" component={Employee} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/skills" component={Skills} />
