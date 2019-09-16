@@ -1,13 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getEmployees } from '../../../actions/employee.action';
+import { getEmployees, deleteEmployee } from '../../../actions/employee.action';
 
 const Employee = (props: any) => {
   useEffect(() => {
     props.getEmployees();
     // eslint-disable-next-line
   }, []);
+
+  const handleDelete = (e: FormEvent<HTMLAnchorElement>, empId: number) => {
+    e.preventDefault();
+    console.log(empId);
+    props.deleteEmployee(empId);
+  };
+
+  console.log('removeEmpId', props.removeEmpId);
 
   return (
     <div>
@@ -21,7 +29,7 @@ const Employee = (props: any) => {
       <div className="card mb-3">
         {/* <div className="card-header"><i className="fas fa-table"></i>Data Table Example</div> */}
         <div className="card-body">
-          <div className="table-responsive">
+          <div className="">
             <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">
               {/* <div className="row">
                 <div className="col-sm-12 col-md-6">
@@ -52,6 +60,9 @@ const Employee = (props: any) => {
                           className="sorting"
                           aria-controls="dataTable"
                           aria-label="Age: activate to sort column ascending">Phone</th>
+                        <th
+                          aria-controls="dataTable"
+                          aria-label="Age: activate to sort column ascending">&nbsp;</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -61,6 +72,15 @@ const Employee = (props: any) => {
                           <td>{emp.last_name}</td>
                           <td>{emp.email}</td>
                           <td>{emp.phone}</td>
+                          <td>
+                            <Link to={"/employee/update/" + emp.id}>
+                              <i className="fa fa-edit"></i>
+                            </Link>
+                            &nbsp;&nbsp;&nbsp;
+                            <Link to="/" onClick={(e) => handleDelete(e, emp.id)}>
+                              <i className="fa fa-trash"></i>
+                            </Link>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -71,14 +91,15 @@ const Employee = (props: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
 const mapStoreToProps = (store: any) => {
   return {
-    employees: store.employee.lists
+    employees: store.employee.lists,
+    removeEmpId: store.employee.delete_id
   }
 }
 
-export default connect(mapStoreToProps, { getEmployees })(Employee);
+export default connect(mapStoreToProps, { getEmployees, deleteEmployee })(Employee);

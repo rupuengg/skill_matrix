@@ -8,6 +8,7 @@ module.exports = {
   INVALID_TOKEN: "Invalid token",
   EMPLOYEE: {
     CREATED: "Employee created successfully",
-    UPDATED: "Employee updated successfully"
+    UPDATED: "Employee updated successfully",
+    DELETED: "Employee deleted successfully"
   }
 };

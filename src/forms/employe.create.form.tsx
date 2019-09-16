@@ -1,15 +1,30 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { employeeValidator } from '../validations/employee.validator';
-import { createEmployee } from '../actions/employee.action';
 
-const EmployeForm = (props: any) => {
+interface EmployeeProps {
+  data?: {
+    id: number,
+    first_name: string,
+    last_name: string,
+    email: string,
+    phone: string
+  } | null,
+  handleSubmit: Function
+}
+
+const EmployeForm = (props: EmployeeProps) => {
+  const empId = props.data ? props.data.id : null;
   return (
     <Formik
-      initialValues={{ first_name: "Mohit", last_name: "Kohli", email: "mkohli@bhavnacorp.com", phone: "9876543210" }}
+      initialValues={{
+        first_name: props.data ? props.data.first_name : "",
+        last_name: props.data ? props.data.last_name : "",
+        email: props.data ? props.data.email : "",
+        phone: props.data ? props.data.phone : "",
+      }}
       onSubmit={(values, actions) => {
-        props.createEmployee(values);
+        props.handleSubmit(values, empId);
       }}
       validationSchema={employeeValidator.employeeCreate}
       render={({ errors, touched, isSubmitting, handleSubmit }) => (
@@ -59,10 +74,13 @@ const EmployeForm = (props: any) => {
               name="phone" />
             <div className="error-box"><span className={"error " + (errors.phone && touched.phone ? "show" : "")}>{errors.phone}</span></div>
           </div>
-          <button type="submit" className="btn btn-primary btn-user btn-block" disabled={isSubmitting}>Create</button>
+          <button
+            type="submit"
+            className="btn btn-primary btn-user btn-block"
+            disabled={isSubmitting}>{props.data ? "Update" : "Create"}</button>
         </form>
       )} />
   );
 }
 
-export default connect(null, { createEmployee })(EmployeForm);
+export default EmployeForm;

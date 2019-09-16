@@ -36,7 +36,7 @@ const LoginForm = (props: LoginFormProps) => {
               placeholder="Enter email address..."
               autoComplete="off"
               name="email" />
-            {errors.email && touched.email ? (<span className="error">{errors.email}</span>) : null}
+            <div className="error-box"><span className={"error " + (errors.email && touched.email ? "show" : "")}>{errors.email}</span></div>
           </div>
           <div className="form-group">
             <Field
@@ -46,7 +46,7 @@ const LoginForm = (props: LoginFormProps) => {
               id="exampleInputPassword"
               placeholder="Enter password"
               name="password" />
-            {errors.password && touched.password ? (<span className="error">{errors.password}</span>) : null}
+            <div className="error-box"><span className={"error " + (errors.password && touched.password ? "show" : "")}>{errors.password}</span></div>
           </div>
           <div className="form-group">
             <div className="custom-control custom-checkbox small">

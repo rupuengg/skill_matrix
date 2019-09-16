@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import EmployeeForm from '../../../forms/employe.create.form';
-import { createEmployee } from '../../../actions/employee.action';
+import { getEmployee, updateEmployee } from '../../../actions/employee.action';
 
-interface EmployeCreateProps {
-  createEmployee: Function
+interface EmployeeUpdateProps {
+  updateEmployee: Function,
+  match: object
 }
 
-const EmployeCreate = (props: EmployeCreateProps) => {
+const EmployeeUpdate = (props: any) => {
+  useEffect(() => {
+    const empId = props.match.params.id;
+    props.getEmployee(empId);
+    // eslint-disable-next-line
+  }, [props.match.params.id]);
+
   return (
     <div>
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
           <Link to="/employee">Employees</Link>
         </li>
-        <li className="breadcrumb-item active">Create</li>
+        <li className="breadcrumb-item active">Edit</li>
       </ol>
       <div className="card mb-3">
         {/* <div className="card-header"><i className="fas fa-table"></i>Data Table Example</div> */}
@@ -34,7 +41,7 @@ const EmployeCreate = (props: EmployeCreateProps) => {
 
                   <div className="col-lg-6">
                     <div className="p-1">
-                      <EmployeeForm handleSubmit={props.createEmployee} data={null} />
+                      <EmployeeForm handleSubmit={props.updateEmployee} data={props.emp} />
                     </div>
                   </div>
 
@@ -48,4 +55,10 @@ const EmployeCreate = (props: EmployeCreateProps) => {
   );
 };
 
-export default connect(null, { createEmployee })(EmployeCreate);
+const mapStoreToProps = (store: any) => {
+  return {
+    emp: store.employee.editEmp
+  };
+};
+
+export default connect(mapStoreToProps, { getEmployee, updateEmployee })(EmployeeUpdate);

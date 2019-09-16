@@ -1,6 +1,6 @@
 import employeeService from '../services/employee-service';
 import { SPINNER_SHOW, SPINNER_HIDE } from '../actiontypes/spinner';
-import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA, EMPLOYEE_ADD } from '../actiontypes/employee';
+import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA, EMPLOYEE_ADD, EMPLOYEE_EDIT, EMPLOYEE_DELETE } from '../actiontypes/employee';
 import { FLASH_SHOW, FLASH_HIDE } from '../actiontypes/flash';
 import { history } from '../helpers/history';
 
@@ -20,7 +20,21 @@ export const getEmployees = () => async (dispatch: any) => {
         })
       }
       dispatch({ type: SPINNER_HIDE });
-    })
+    });
+};
+
+export const getEmployee = (empId: number) => async (dispatch: any) => {
+  await employeeService.getEmployee(empId)
+    .then(res => {
+      if (res.status === 200) {
+        res.json().then((result: any) => {
+          dispatch({
+            type: EMPLOYEE_EDIT,
+            payload: result
+          })
+        });
+      }
+    });
 };
 
 export const createEmployee = (data: any) => async (dispatch: any) => {
@@ -34,6 +48,63 @@ export const createEmployee = (data: any) => async (dispatch: any) => {
             payload: result.status
           });
           history.push('/employee');
+          dispatch({ type: FLASH_SHOW, payload: result.status });
+          setTimeout(() => {
+            dispatch({ type: FLASH_HIDE, payload: "" });
+          }, 3000);
+        });
+      }
+      dispatch({ type: SPINNER_HIDE });
+    })
+    .catch(err => {
+      console.log();
+    })
+};
+
+export const editEmployee = (empId: number) => (dispatch: any) => {
+  dispatch({
+    type: EMPLOYEE_EDIT,
+    EMP_ID: empId
+  });
+};
+
+export const updateEmployee = (data: any, empId: number) => async (dispatch: any) => {
+  dispatch({ type: SPINNER_SHOW });
+  await employeeService.updateEmployee(data, empId)
+    .then(res => {
+      if (res.status === 200) {
+        res.json().then((result: any) => {
+          dispatch({
+            type: EMPLOYEE_EDIT,
+            payload: result.status
+          });
+          history.push('/employee');
+          dispatch({ type: FLASH_SHOW, payload: result.status });
+          setTimeout(() => {
+            dispatch({ type: FLASH_HIDE, payload: "" });
+          }, 3000);
+        });
+      }
+      dispatch({ type: SPINNER_HIDE });
+    })
+    .catch(err => {
+      console.log();
+    })
+};
+
+export const deleteEmployee = (empId: number) => async (dispatch: any) => {
+  dispatch({ type: SPINNER_SHOW });
+  await employeeService.deleteEmployee(empId)
+    .then(res => {
+      if (res.status === 200) {
+        res.json().then((result: any) => {
+          dispatch({
+            type: EMPLOYEE_DELETE,
+            payload: {
+              status: result.status,
+              deleteId: result.data
+            },
+          });
           dispatch({ type: FLASH_SHOW, payload: result.status });
           setTimeout(() => {
             dispatch({ type: FLASH_HIDE, payload: "" });

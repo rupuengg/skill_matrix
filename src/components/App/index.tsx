@@ -15,6 +15,7 @@ import { history } from '../../helpers/history';
 // Admin
 import Employee from '../admin/Employee';
 import EmployeCreate from '../admin/Employee/create';
+import EmployeeUpdate from '../admin/Employee/update';
 import Dashboard from '../admin/Dashboard';
 import Skills from '../admin/Skills';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
@@ -27,8 +28,10 @@ const App: React.FC = (props: any) => {
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
+
           <PrivateRoute exact path="/employee" component={Employee} />
           <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
+          <PrivateRoute exact path="/employee/update/:id" component={EmployeeUpdate} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/skills" component={Skills} />
           <Spinner />

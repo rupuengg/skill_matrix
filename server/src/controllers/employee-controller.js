@@ -32,7 +32,7 @@ const getEmployee = async (req, res) => {
 const deleteEmployee = async (req, res) => {
   try {
     const emp = await employeeService.deleteEmployee(req.params.id);
-    return res.status(OK).json(emp);
+    return res.status(OK).json({ status: EMPLOYEE.DELETED, data: req.params.id });
   } catch (err) {
     res.status(err.status || SERVER_ERROR).json(err);
   }

@@ -27,6 +27,10 @@
   visibility: visible;
 }
 
-.alert .alert-heading{
-  margin-bottom:0px;
+.alert .alert-heading {
+  margin-bottom: 0px;
+}
+
+.search {
+  padding: 1.12rem .75rem;
 }
