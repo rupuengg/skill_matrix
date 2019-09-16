@@ -10,5 +10,10 @@ module.exports = {
     CREATED: "Employee created successfully",
     UPDATED: "Employee updated successfully",
     DELETED: "Employee deleted successfully"
+  },
+  SKILL: {
+    CREATED: "Skill created successfully",
+    UPDATED: "Skill updated successfully",
+    DELETED: "Skill deleted successfully"
   }
 };
