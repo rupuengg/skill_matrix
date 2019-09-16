@@ -10,7 +10,7 @@ const initialState = {
 export const employeeReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case EMPLOYEE_LIST:
-      return { ...state, lists: action.payload };
+      return { ...state, lists: action.payload, editEmp: null, delete_id: "" };
     case EMPLOYEE_NO_DATA:
       return { ...state, noData: action.payload };
     case EMPLOYEE_ADD:

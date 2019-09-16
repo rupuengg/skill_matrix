@@ -7,15 +7,12 @@ const Employee = (props: any) => {
   useEffect(() => {
     props.getEmployees();
     // eslint-disable-next-line
-  }, []);
+  }, [props.removeEmpId]);
 
   const handleDelete = (e: FormEvent<HTMLAnchorElement>, empId: number) => {
     e.preventDefault();
-    console.log(empId);
     props.deleteEmployee(empId);
   };
-
-  console.log('removeEmpId', props.removeEmpId);
 
   return (
     <div>
@@ -83,6 +80,12 @@ const Employee = (props: any) => {
                           </td>
                         </tr>
                       ))}
+
+                      {!props.employees.length && <tr>
+                        <td colSpan={5}>
+                          No records found
+                        </td>
+                      </tr>}
                     </tbody>
                   </table>
                 </div>

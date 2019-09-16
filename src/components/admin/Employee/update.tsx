@@ -10,11 +10,14 @@ interface EmployeeUpdateProps {
 }
 
 const EmployeeUpdate = (props: any) => {
+  console.log('props.employee', props.employee);
   useEffect(() => {
     const empId = props.match.params.id;
     props.getEmployee(empId);
     // eslint-disable-next-line
-  }, [props.match.params.id]);
+  }, []);
+
+  if (!props.employee) return null;
 
   return (
     <div>
@@ -41,7 +44,7 @@ const EmployeeUpdate = (props: any) => {
 
                   <div className="col-lg-6">
                     <div className="p-1">
-                      <EmployeeForm handleSubmit={props.updateEmployee} data={props.emp} />
+                      <EmployeeForm handleSubmit={props.updateEmployee} data={props.employee} />
                     </div>
                   </div>
 
@@ -57,7 +60,7 @@ const EmployeeUpdate = (props: any) => {
 
 const mapStoreToProps = (store: any) => {
   return {
-    emp: store.employee.editEmp
+    employee: store.employee.editEmp
   };
 };
 
