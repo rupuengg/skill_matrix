@@ -17,7 +17,9 @@ import Employee from '../admin/Employee';
 import EmployeCreate from '../admin/Employee/create';
 import EmployeeUpdate from '../admin/Employee/update';
 import Dashboard from '../admin/Dashboard';
-import Skills from '../admin/Skills';
+import Skill from '../admin/Skill';
+import SkillCreate from '../admin/Skill/create';
+import SkillUpdate from '../admin/Skill/update';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 
 const App: React.FC = (props: any) => {
@@ -33,7 +35,10 @@ const App: React.FC = (props: any) => {
           <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
           <PrivateRoute exact path="/employee/update/:id" component={EmployeeUpdate} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/skills" component={Skills} />
+
+          <PrivateRoute exact path="/skills" component={Skill} />
+          <PrivateRoute exact path="/skills/create" component={SkillCreate} />
+          <PrivateRoute exact path="/skills/update/:id" component={SkillUpdate} />
           <Spinner />
         </div>
       </Router>
