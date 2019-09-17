@@ -21,6 +21,10 @@ import SkillUpdate from '../admin/Skill/update';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import SidebarProvider from '../../providers/sidebar.provider';
 
+import EmployeeSkill from '../employee/Skill';
+import EmployeeSkillCreate from '../employee/Skill/create';
+import EmployeeSkillUpdate from '../employee/Skill/update';
+
 const App: React.FC = (props: any) => {
   return (
     <SidebarProvider>
@@ -46,6 +50,11 @@ const App: React.FC = (props: any) => {
             <PrivateRoute exact path="/skills" component={Skill} />
             <PrivateRoute exact path="/skills/create" component={SkillCreate} />
             <PrivateRoute exact path="/skills/update/:id" component={SkillUpdate} />
+
+            {/* Employee Skills */}
+            <PrivateRoute exact path="/employee/skills" component={EmployeeSkill} />
+            <PrivateRoute exact path="/employee/skills/create" component={EmployeeSkillCreate} />
+            <PrivateRoute exact path="/employee/skills/update/:id" component={EmployeeSkillUpdate} />
             <Spinner />
           </div>
         </Router>

@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "id",
       targetKey: "employee_id"
     });
-    employee_skills.hasMany(models.skill, {
-      foreignKey: "id",
-      targetKey: "skill_id"
+    employee_skills.belongsTo(models.skill, {
+      foreignKey: "skill_id",
+      targetKey: "id"
     });
   };
 

@@ -1,4 +1,6 @@
+const sequelize = require('sequelize');
 const employeeSkillModel = require('../models').employee_skills;
+const skillModel = require('../models').skill;
 
 const createEmployeeSkill = async (data) => {
   console.log('ddata', data, employeeSkillModel);
@@ -10,7 +12,13 @@ const createEmployeeSkill = async (data) => {
 const getEmployeeSkills = async (filters) => {
   const emps = await employeeSkillModel.findAll({
     where: filters,
-    order: [['id', 'DESC']]
+    order: [['id', 'DESC']],
+    include: [{
+      model: skillModel,
+      on: {
+        'id': { [sequelize.Op.eq]: sequelize.col('employee_skills.skill_id') },
+      }
+    }]
   });
   return emps;
 }

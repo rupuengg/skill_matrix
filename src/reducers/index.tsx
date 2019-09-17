@@ -4,11 +4,13 @@ import { spinnerReducer } from './spinnerReducer';
 import { flashReducer } from './flashReducer';
 import { employeeReducer } from './employeeReducer';
 import { skillReducer } from './skillReducer';
+import { employeeSkillReducer } from './employeeSkillReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
   spinner: spinnerReducer,
   employee: employeeReducer,
   flash: flashReducer,
-  skill: skillReducer
+  skill: skillReducer,
+  employeeSkill: employeeSkillReducer
 });

@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   skill.associate = function (models) {
-    skill.belongsTo(models.employee_skills, {
-      foreignKey: "id",
-      sourceKey: "skill_id"
+    skill.hasOne(models.employee_skills, {
+      foreignKey: "skill_id",
+      sourceKey: "id"
     });
   };
 
