@@ -1,8 +1,7 @@
-const employeeSkillModel = require('../models').employee_skill;
-console.log('employeeSkillModel', employeeSkillModel);
+const employeeSkillModel = require('../models').employee_skills;
 
 const createEmployeeSkill = async (data) => {
-  console.log('ddata', data);
+  console.log('ddata', data, employeeSkillModel);
   const emp = await employeeSkillModel.build(data).save();
   console.log(emp);
   return emp;

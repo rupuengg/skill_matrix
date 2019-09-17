@@ -1,9 +1,7 @@
-const employeeSkillDao = require('../dao/employee-dao');
+const employeeSkillDao = require('../dao/employee-skill-dao');
 
 const createEmployeeSkill = async (data) => {
-  console.log('sdata', data);
   const emp = await employeeSkillDao.createEmployeeSkill(data);
-  console.log(emp);
   return emp;
 };
 

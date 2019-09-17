@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('employee-skills', {
+    return queryInterface.createTable('employee_skills', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -33,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('employee-skills');
+    return queryInterface.dropTable('employee_skills');
   }
 };
