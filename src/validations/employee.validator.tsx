@@ -6,7 +6,6 @@ const employeeCreate = Yup.object().shape({
   email: Yup.string().required("Email is mandatory").email("Email should be a email"),
   phone: Yup.string().required("Phone is mandatory")
 });
-
 export const employeeValidator = {
   employeeCreate
 };

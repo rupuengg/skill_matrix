@@ -18,6 +18,7 @@ import EmployeCreate from '../admin/Employee/create';
 import Dashboard from '../admin/Dashboard';
 import Skills from '../admin/Skills';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
+import ResetPassword from '../ResetPassword/ResetPassword';
 
 const App: React.FC = (props: any) => {
   return (
@@ -27,10 +28,12 @@ const App: React.FC = (props: any) => {
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
+          <Route exact path="/ResetPassword" component={ResetPassword} />
           <PrivateRoute exact path="/employee" component={Employee} />
           <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/skills" component={Skills} />
+
           <Spinner />
         </div>
       </Router>

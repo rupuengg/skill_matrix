@@ -1,9 +1,8 @@
 import React from 'react';
-import './index.css';
-import LoginForm from '../../forms/login.form';
 import { Link } from 'react-router-dom';
+import ResetForm from './ResetForm';
 
-const Login = () => {
+const ResetPassword = () => {
   return (
     <div className="bg-gradient-primary" >
       <div className="container">
@@ -16,16 +15,11 @@ const Login = () => {
 
                   <div className="col-lg-6">
                     <div className="p-5">
-                      <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                      </div>
-                      <LoginForm />
+                     <ResetForm/>
+                    {/* password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character */}
                       <hr />
                       <div className="text-center">
-                        <Link to="/ForgetPassword">Forget Password</Link>
-                      </div>
-                      <div className="text-center">
-                        <Link to="/Registration">Create An Account</Link>
+                        <Link to="/Login">Back to Login</Link>
                       </div>
                     </div>
                   </div>
@@ -41,4 +35,4 @@ const Login = () => {
 }
 
 
-export default Login;
+export default ResetPassword;

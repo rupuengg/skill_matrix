@@ -1,8 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 
-
-
 const ForgetForm = () => (
     <div>
         <Formik
@@ -27,7 +25,7 @@ const ForgetForm = () => (
                             placeholder="Enter email address..."
                             autoComplete="off"
                             name="email" validate={validateEmail} />
-                        {errors.email && touched.email && <div className="main-error">{errors.email}</div>}
+                           {errors.email && touched.email ? (<span className="error">{errors.email}</span>) : null}
                     </div>
                     <button type="submit" className="btn btn-primary btn-user btn-block" >Submit</button>
                 </form>
