@@ -1,8 +1,6 @@
 const userService = require('../services/user-service');
-const {
-  OK,
-  SERVER_ERROR
-} = require('../config/httpConstans');
+const { OK, SERVER_ERROR } = require('../config/httpConstans');
+const { USER } = require('../constants/msgConstant');
 
 const getUsers = async (req, res) => {
   try {
@@ -15,8 +13,18 @@ const getUsers = async (req, res) => {
   }
 };
 
+const updateUserProfile = async (req, res) => {
+  try {
+    const emp = await userService.updateUserProfile(req.body, req.user.id);
+    return res.status(OK).json({ status: USER.PROFILE_UPDATED, data: emp });
+  } catch (err) {
+    return res.status(err.status || SERVER_ERROR).json(err);
+  }
+}
+
 const userController = {
-  getUsers
+  getUsers,
+  updateUserProfile
 };
 
 module.exports = userController;

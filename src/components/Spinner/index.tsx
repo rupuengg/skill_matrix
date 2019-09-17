@@ -6,7 +6,6 @@ class Spinner extends React.Component<SpinnerProps> {
   render() {
     const { spinner } = this.props;
     if (spinner) {
-      console.log('spinner', spinner);
       return (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status">

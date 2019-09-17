@@ -34,3 +34,10 @@
 .search {
   padding: 1.12rem .75rem;
 }
+
+.alert.alert-success {
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  min-width: 300px;
+}

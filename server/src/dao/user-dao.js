@@ -18,9 +18,15 @@ const getUserByEmail = async (email) => {
   return user;
 };
 
+const updateUserProfile = async (data, filters) => {
+  const emp = await userModel.update(data, { where: filters });
+  return emp[0];
+};
+
 const userDao = {
   getUsers,
   getUserByEmail,
+  updateUserProfile
 };
 
 module.exports = userDao;

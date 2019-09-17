@@ -2,22 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { authValidator } from '../validations/auth.validator';
-import { userLogin } from '../actions/user.action';
+import { authentication } from '../actions/auth.action';
 
 interface LoginFormProps {
-  userLogin: Function,
+  authentication: Function,
   err?: {
     message: string
   }
 }
 
 const LoginForm = (props: LoginFormProps) => {
-  const { userLogin, err } = props;
+  const { authentication, err } = props;
   return (
     <Formik
       initialValues={{ email: "admin@yopmail.com", password: "testing" }}
       onSubmit={(values, actions) => {
-        userLogin(values.email, values.password)
+        authentication(values.email, values.password)
           .then((res: any) => {
             actions.setSubmitting(false);
           });
@@ -66,4 +66,4 @@ const mapStoreToProps = (store: any) => {
   }
 }
 
-export default connect(mapStoreToProps, { userLogin })(LoginForm);
+export default connect(mapStoreToProps, { authentication })(LoginForm);

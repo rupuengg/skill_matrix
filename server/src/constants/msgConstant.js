@@ -15,5 +15,8 @@ module.exports = {
     CREATED: "Skill created successfully",
     UPDATED: "Skill updated successfully",
     DELETED: "Skill deleted successfully"
+  },
+  USER: {
+    "PROFILE_UPDATED": "Profile has been udpated"
   }
 };

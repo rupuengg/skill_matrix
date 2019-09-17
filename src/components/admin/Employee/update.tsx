@@ -10,7 +10,6 @@ interface EmployeeUpdateProps {
 }
 
 const EmployeeUpdate = (props: any) => {
-  console.log('props.employee', props.employee);
   useEffect(() => {
     const empId = props.match.params.id;
     props.getEmployee(empId);

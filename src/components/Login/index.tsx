@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.css';
 import LoginForm from '../../forms/login.form';
+import { authentication } from '../../actions/auth.action';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props: any) => {
   return (
     <div className="bg-gradient-primary" >
       <div className="container">
@@ -19,7 +21,7 @@ const Login = () => {
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                       </div>
-                      <LoginForm />
+                      <LoginForm handleSubmit={props.authentication} />
                       <hr />
                       <div className="text-center">
                         <Link to="/ForgetPassword">Forget Password</Link>
@@ -41,4 +43,4 @@ const Login = () => {
 }
 
 
-export default Login;
+export default connect(null, { authentication })(Login);

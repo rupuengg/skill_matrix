@@ -1,52 +1,49 @@
 import userService from '../services/user-service';
-import { USER_LOGIN, USER_LOGIN_ERROR, USER_LOGGOUT } from '../actiontypes/user';
+import { USER_GET, USER_PROFILE_UPDATE } from '../actiontypes/user';
 import { SPINNER_SHOW, SPINNER_HIDE } from '../actiontypes/spinner';
+import { FLASH_SHOW, FLASH_HIDE } from '../actiontypes/flash';
 import { history } from '../helpers/history';
 
-export const userLogin = (email: string, password: string) => async (dispatch: any) => {
+export const userGet = () => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
-  await userService.userAuthentication(email, password)
-    .then((res: any) => {
-      console.log('res', res);
-      const token = res.data ? res.data.token : null;
-      if (token) {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-
-        dispatch({
-          type: USER_LOGIN,
-          payload: res.data.user
+  await userService.userGet()
+    .then(res => {
+      if (res.status === 200) {
+        res.json().then(result => {
+          dispatch({
+            type: USER_GET,
+            payload: result.data
+          });
+          dispatch({ type: SPINNER_HIDE });
         });
-
-        history.push('/');
       } else {
-        dispatch({
-          type: USER_LOGIN_ERROR,
-          payload: res
-        });
+        history.push('/login');
       }
-
-      dispatch({ type: SPINNER_HIDE });
     })
     .catch(err => {
-      console.log('A Error', err);
+      console.log(err);
     });
 };
 
-export const userLogout = () => async (dispatch: any) => {
+export const profileUpdate = (data: any) => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
-  await userService.userLogout()
+  await userService.profileUpdate(data)
     .then(res => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-
-      dispatch({
-        type: USER_LOGGOUT
-      });
-
-      dispatch({ type: SPINNER_HIDE });
-
-      history.push('/login');
+      if (res.status === 200) {
+        res.json().then((result: any) => {
+          dispatch({
+            type: USER_PROFILE_UPDATE,
+            payload: data
+          });
+          dispatch({ type: FLASH_SHOW, payload: result.status });
+          dispatch({ type: SPINNER_HIDE });
+          setTimeout(() => {
+            dispatch({ type: FLASH_HIDE, payload: "" });
+          }, 3000);
+        });
+      } else {
+        history.push('/login');
+      }
     })
     .catch(err => {
       console.log(err);

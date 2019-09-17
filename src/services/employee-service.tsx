@@ -2,8 +2,7 @@ import { reqOptions } from '../helpers/common';
 // import { OptionInterface } from '../interfaces/option.interface';
 
 const getEmployees = async () => {
-  const token = localStorage.getItem('token');
-  const request: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'GET', token);
+  const request: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'GET');
   return fetch(request)
     .then((res: any) => res.json())
     .then((res: any) => {
@@ -12,8 +11,7 @@ const getEmployees = async () => {
 };
 
 const getEmployee = async (empId: number) => {
-  const token = localStorage.getItem('token');
-  const request: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'GET', token);
+  const request: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'GET');
   return fetch(request)
     .then((res: any) => {
       return res;
@@ -24,8 +22,7 @@ const getEmployee = async (empId: number) => {
 };
 
 const createEmployee = async (data: any) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'POST', token, data);
+  const options: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'POST', data);
   return fetch(options)
     .then((res: any) => {
       return res;
@@ -36,8 +33,7 @@ const createEmployee = async (data: any) => {
 };
 
 const updateEmployee = async (data: any, empId: number) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'PUT', token, data);
+  const options: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'PUT', data);
   return fetch(options)
     .then((res: any) => {
       return res;
@@ -48,8 +44,7 @@ const updateEmployee = async (data: any, empId: number) => {
 };
 
 const deleteEmployee = async (empId: number) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'DELETE', token);
+  const options: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'DELETE');
   return fetch(options)
     .then((res: any) => {
       return res;

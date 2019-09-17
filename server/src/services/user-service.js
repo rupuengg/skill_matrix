@@ -7,8 +7,14 @@ const getUsers = async (user_id) => {
   return user;
 };
 
+const updateUserProfile = async (data, userId) => {
+  const emp = await userDao.updateUserProfile(data, { id: userId });
+  return emp;
+};
+
 const userService = {
   getUsers,
+  updateUserProfile
 };
 
 module.exports = userService;

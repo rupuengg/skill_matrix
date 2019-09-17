@@ -2,8 +2,7 @@ import { reqOptions } from '../helpers/common';
 // import { OptionInterface } from '../interfaces/option.interface';
 
 const getSkills = async () => {
-  const token = localStorage.getItem('token');
-  const request: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'GET', token);
+  const request: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'GET');
   return fetch(request)
     .then((res: any) => res.json())
     .then((res: any) => {
@@ -12,8 +11,7 @@ const getSkills = async () => {
 };
 
 const getSkill = async (skillId: number) => {
-  const token = localStorage.getItem('token');
-  const request: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'GET', token);
+  const request: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'GET');
   return fetch(request)
     .then((res: any) => {
       return res;
@@ -24,8 +22,7 @@ const getSkill = async (skillId: number) => {
 };
 
 const createSkill = async (data: any) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'POST', token, data);
+  const options: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'POST', data);
   return fetch(options)
     .then((res: any) => {
       return res;
@@ -36,8 +33,7 @@ const createSkill = async (data: any) => {
 };
 
 const updateSkill = async (data: any, skillId: number) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'PUT', token, data);
+  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'PUT', data);
   return fetch(options)
     .then((res: any) => {
       return res;
@@ -48,8 +44,7 @@ const updateSkill = async (data: any, skillId: number) => {
 };
 
 const deleteSkill = async (skillId: number) => {
-  const token = localStorage.getItem('token');
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'DELETE', token);
+  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'DELETE');
   return fetch(options)
     .then((res: any) => {
       return res;
