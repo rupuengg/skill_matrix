@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataTypes) => {
   const employee = sequelize.define('employee', {
     first_name: DataTypes.STRING,
@@ -8,12 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING
   }, {});
 
-
   employee.associate = function (models) {
     employee.hasMany(models.employee_skills, {
       foreignKey: "employee_id",
       as: "employee_id"
     });
+    // employee.belongsTo(models.users, {
+    //   foreignKey: "id",
+    //   as: "employee_id"
+    // });
   };
 
   return employee;

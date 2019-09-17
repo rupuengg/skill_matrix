@@ -1,6 +1,12 @@
 const userModel = require('../models').user;
 const sequelize = require('../models').sequelize;
 
+const createUser = async (data) => {
+  console.log(data);
+  const user = await userModel.build(data).save();
+  return user;
+};
+
 const getUsers = async (filters) => {
   const users = await userModel.findOne({
     where: filters
@@ -24,6 +30,7 @@ const updateUserProfile = async (data, filters) => {
 };
 
 const userDao = {
+  createUser,
   getUsers,
   getUserByEmail,
   updateUserProfile

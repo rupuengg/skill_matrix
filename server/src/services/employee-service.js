@@ -1,7 +1,11 @@
+const bcrypt = require('bcrypt');
 const employeeDao = require('../dao/employee-dao');
+const userDao = require('../dao/user-dao');
 
 const createEmployee = async (data) => {
   const emp = await employeeDao.createEmployee(data);
+  const password = await bcrypt.hash(data.first_name.toLowerCase().substr(0, 4) + data.phone.toLowerCase().substr(6, 4), 10)
+  await userDao.createUser({ ...data, employeeId: emp.id, password: password });
   return emp;
 };
 

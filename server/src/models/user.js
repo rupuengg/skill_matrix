@@ -1,6 +1,6 @@
-
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
+    employeeId: DataTypes.INTEGER,
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
   // Associate to other tables
   user.associate = function (models) {
     // associations can be defined here
-    // user.hasMany(models.auth, {
-    //   foreignKey: 'user_id'
-    // });
+    user.belongsTo(models.employee, {
+      foreignKey: 'id'
+    });
   };
 
   return user;
