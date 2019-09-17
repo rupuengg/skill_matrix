@@ -3,7 +3,7 @@ import { Formik, Field } from 'formik';
 import { profileValidator } from '../validations/profile.validator';
 
 interface ProfileProps {
-  data?: {
+  user: {
     id: number,
     first_name: string,
     last_name: string,
@@ -13,16 +13,12 @@ interface ProfileProps {
   handleSubmit: Function
 }
 
-const ProfileForm = (props: ProfileProps) => {
-  const profileId = props.data ? props.data.id : null;
+const ProfileForm = (props: any) => {
+  const profileId = props.user ? props.user.id : null;
+
   return (
     <Formik
-      initialValues={{
-        first_name: props.data ? props.data.first_name : "",
-        last_name: props.data ? props.data.last_name : "",
-        email: props.data ? props.data.email : "",
-        phone: props.data ? props.data.phone : "",
-      }}
+      initialValues={props.user}
       onSubmit={(values, actions) => {
         props.handleSubmit(values, profileId);
         actions.setSubmitting(false);

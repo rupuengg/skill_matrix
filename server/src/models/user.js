@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     phone: DataTypes.STRING,
-    profile_pic: DataTypes.STRING
+    profile_pic: DataTypes.STRING,
+    user_type: DataTypes.INTEGER
   }, {});
 
   // Associate to other tables

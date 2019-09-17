@@ -6,7 +6,7 @@ import store from '../../helpers/store';
 
 import Login from '../Login';
 import Home from '../Home';
-import { PrivateRoute } from '../Common/PrivateRoute';
+import PrivateRoute from '../Common/PrivateRoute';
 import Spinner from '../Spinner';
 import { history } from '../../helpers/history';
 // Admin

@@ -10,7 +10,7 @@ const Profile = (props: any) => {
     // eslint-disable-next-line
   }, []);
 
-  if (!props.user) return null;
+  if (Object.keys(props.user).length === 0) return null;
 
   return (
     <div>
@@ -26,7 +26,7 @@ const Profile = (props: any) => {
 
                 <div className="col-lg-6">
                   <div className="p-1">
-                    <ProfileForm handleSubmit={props.profileUpdate} data={props.user} />
+                    <ProfileForm handleSubmit={props.profileUpdate} user={props.user} />
                   </div>
                 </div>
 

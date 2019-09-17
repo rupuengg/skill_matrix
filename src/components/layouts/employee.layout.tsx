@@ -1,9 +1,9 @@
 import React from 'react';
-import Sidebar from './admin/sidebar';
-import Header from './admin/header';
+import Sidebar from './employee/sidebar';
+import Header from './employee/header';
 import Flash from '../Flash';
 
-const AdminLayout = (props: any) => {
+const EmployeeLayout = (props: any) => {
   return (
     <div id="wrapper">
       <Sidebar />
@@ -20,4 +20,4 @@ const AdminLayout = (props: any) => {
   );
 }
 
-export default AdminLayout;
+export default EmployeeLayout;
