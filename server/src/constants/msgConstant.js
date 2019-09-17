@@ -11,6 +11,11 @@ module.exports = {
     UPDATED: "Employee updated successfully",
     DELETED: "Employee deleted successfully"
   },
+  EMPLOYEE_SKILL: {
+    CREATED: "Employee's skill created successfully",
+    UPDATED: "Employee's skill updated successfully",
+    DELETED: "Employee's skill deleted successfully"
+  },
   SKILL: {
     CREATED: "Skill created successfully",
     UPDATED: "Skill updated successfully",

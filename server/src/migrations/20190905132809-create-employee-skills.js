@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('employee-skills', {
@@ -11,20 +10,17 @@ module.exports = {
       employee_id: {
         type: Sequelize.INTEGER
       },
-      skill_name: {
-        type: Sequelize.STRING
-      },
-      total_exp_in_year: {
-        type: Sequelize.FLOAT
-      },
-      proficiency: {
-        type: Sequelize.STRING
-      },
-      prior_joining: {
-        type: Sequelize.BOOLEAN
-      },
-      technology_stack_id: {
+      skill_id: {
         type: Sequelize.INTEGER
+      },
+      skill_version: {
+        type: Sequelize.STRING
+      },
+      exp_in_month: {
+        type: Sequelize.STRING
+      },
+      last_used: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

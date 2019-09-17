@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   employee.associate = function (models) {
-    employee.hasMany(models.employee_skills, {
-      foreignKey: "employee_id",
-      as: "employee_id"
+    employee.belongsTo(models.employee_skills, {
+      foreignKey: "id",
+      sourceKey: "employee_id"
     });
     // employee.belongsTo(models.users, {
     //   foreignKey: "id",
