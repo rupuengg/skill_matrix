@@ -15,6 +15,7 @@ const ResetPassword = () => {
 
                   <div className="col-lg-6">
                     <div className="p-5">
+                  
                      <ResetForm/>
                     {/* password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character */}
                       <hr />

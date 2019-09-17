@@ -37,7 +37,7 @@ const ResetForm = () => {
                             autoComplete="off"
                             name="passwordConfirmation" />
                         {errors.passwordConfirmation && touched.passwordConfirmation ? (<span className="error">{errors.passwordConfirmation}</span>) : null}
-
+                       <p>Password Should be min 8 char Atleast One UpperCase,One LowerCase,one numeric digit,and one special character</p>
                     </div>
                     <button type="submit" className="btn btn-primary btn-user btn-block" >Submit</button>
 
