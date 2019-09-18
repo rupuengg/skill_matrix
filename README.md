@@ -1,21 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Git Clone (https://github.com/rupuengg/skill_matrix.git).
 
-## Available Scripts
+## `Application`
 
-In the project directory, you can run:
+### `npm install`
+
+Install all dependencies
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Frontend Application Run On [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Backend APIs Run on [http://localhost:8080](http://localhost:8080).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### `npm run start:dev`
 
-### `npm test`
+Run only frondend application - [http://localhost:3000](http://localhost:3000)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run start:api`
+
+Run only backend apis - [http://localhost:8080](http://localhost:8080)
 
 ### `npm run build`
 
@@ -37,8 +40,16 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## `DB`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Run all migration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`$ sequelize db:migrate`
+
+### Seed data
+
+`$ sequelize db:seed:all`
+
+### Undo migration
+
+`$ sequelize db:migrate:undo:all`
