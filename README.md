@@ -28,6 +28,8 @@ Builds the app for production to the `build` folder.
 
 ## `DB`
 
+Before running migration you need to install MSSQL or MySql on your system and update .env file from .env.example file
+
 Run all migration
 
 `$ sequelize db:migrate`
