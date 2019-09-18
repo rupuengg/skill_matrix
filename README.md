@@ -2,38 +2,40 @@ Git Clone (https://github.com/rupuengg/skill_matrix.git).
 
 ## `Application`
 
-### `npm install`
-
 Install all dependencies
 
-### `npm start`
+`$ npm install`
+
+Run Application
+
+`$ npm start`
 
 Runs the app in the development mode.<br>
 Frontend Application Run On [http://localhost:3000](http://localhost:3000) to view it in the browser.<br>
 Backend APIs Run on [http://localhost:8080](http://localhost:8080).
 
-### `npm run start:dev`
+`$ npm run start:dev`
 
 Run only frondend application - [http://localhost:3000](http://localhost:3000)
 
-### `npm run start:api`
+`$ npm run start:api`
 
 Run only backend apis - [http://localhost:8080](http://localhost:8080)
 
-### `npm run build`
+`$ npm run build`
 
 Builds the app for production to the `build` folder.
 
 ## `DB`
 
-### Run all migration
+Run all migration
 
 `$ sequelize db:migrate`
 
-### Seed data
+Seed data
 
 `$ sequelize db:seed:all`
 
-### Undo migration
+Undo migration
 
 `$ sequelize db:migrate:undo:all`
