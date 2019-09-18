@@ -10,7 +10,7 @@ interface EmployeeUpdateProps {
 }
 
 const EmployeeSkillUpdate = (props: any) => {
-  console.log('props.employee', props.skill);
+  console.log('props.employee.skills', props.skill);
   useEffect(() => {
     const empId = props.match.params.id;
     props.getEmployeeSkill(empId);
@@ -52,7 +52,7 @@ const EmployeeSkillUpdate = (props: any) => {
 
 const mapStoreToProps = (store: any) => {
   return {
-    skill: store.skill.editEmp
+    skill: store.employeeSkill.editEmp
   };
 };
 

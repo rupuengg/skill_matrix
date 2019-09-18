@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Router, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from '../../helpers/store';
+import { connect } from 'react-redux';
+import { USER_LOGIN } from '../../actiontypes/user';
 
 import Login from '../Login';
-import Home from '../Home';
+// import Home from '../Home';
 import PrivateRoute from '../Common/PrivateRoute';
 import Spinner from '../Spinner';
 import { history } from '../../helpers/history';
@@ -26,41 +26,52 @@ import EmployeeSkillCreate from '../employee/Skill/create';
 import EmployeeSkillUpdate from '../employee/Skill/update';
 
 const App: React.FC = (props: any) => {
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      const user = JSON.parse(userString ? userString : "")
+      props.userSet(user);
+    }
+  });
   return (
     <SidebarProvider>
-      <Provider store={store}>
-        <Router history={history}>
-          <div className="App">
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/" component={Home} />
-            <Route exact path="/ForgetPassword" component={ForgetPassword} />
+      <Router history={history}>
+        <div className="App">
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/" component={Employee} />
+          <Route exact path="/ForgetPassword" component={ForgetPassword} />
 
-            {/* Profile */}
-            <PrivateRoute exact path="/profile" component={Profile} />
+          {/* Profile */}
+          <PrivateRoute exact path="/profile" component={Profile} />
 
-            {/* Dashboard */}
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          {/* Dashboard */}
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
-            {/* Employee */}
-            <PrivateRoute exact path="/employee" component={Employee} />
-            <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
-            <PrivateRoute exact path="/employee/update/:id" component={EmployeeUpdate} />
+          {/* Employee */}
+          <PrivateRoute exact path="/employee" component={Employee} />
+          <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
+          <PrivateRoute exact path="/employee/update/:id" component={EmployeeUpdate} />
 
-            {/* Skills */}
-            <PrivateRoute exact path="/skills" component={Skill} />
-            <PrivateRoute exact path="/skills/create" component={SkillCreate} />
-            <PrivateRoute exact path="/skills/update/:id" component={SkillUpdate} />
+          {/* Skills */}
+          <PrivateRoute exact path="/skills" component={Skill} />
+          <PrivateRoute exact path="/skills/create" component={SkillCreate} />
+          <PrivateRoute exact path="/skills/update/:id" component={SkillUpdate} />
 
-            {/* Employee Skills */}
-            <PrivateRoute exact path="/employee/skills" component={EmployeeSkill} />
-            <PrivateRoute exact path="/employee/skills/create" component={EmployeeSkillCreate} />
-            <PrivateRoute exact path="/employee/skills/update/:id" component={EmployeeSkillUpdate} />
-            <Spinner />
-          </div>
-        </Router>
-      </Provider>
+          {/* Employee Skills */}
+          <PrivateRoute exact path="/employee/skills" component={EmployeeSkill} />
+          <PrivateRoute exact path="/employee/skills/create" component={EmployeeSkillCreate} />
+          <PrivateRoute exact path="/employee/skills/update/:id" component={EmployeeSkillUpdate} />
+          <Spinner />
+        </div>
+      </Router>
     </SidebarProvider>
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    userSet: (user: any) => dispatch({ type: USER_LOGIN, payload: user })
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

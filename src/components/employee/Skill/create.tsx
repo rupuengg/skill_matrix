@@ -5,7 +5,8 @@ import EmployeSkillForm from '../../../forms/employe.skill.form';
 import { createEmployeeSkill } from '../../../actions/employee-skill.action';
 
 interface EmployeCreateProps {
-  createEmployeeSkill: Function
+  createEmployeeSkill: Function,
+  employeId: string
 }
 
 const EmployeeSkillCreate = (props: EmployeCreateProps) => {
@@ -26,7 +27,7 @@ const EmployeeSkillCreate = (props: EmployeCreateProps) => {
 
                   <div className="col-lg-6">
                     <div className="p-1">
-                      <EmployeSkillForm handleSubmit={props.createEmployeeSkill} data={null} />
+                      <EmployeSkillForm handleSubmit={props.createEmployeeSkill} data={null} empId={props.employeId} />
                     </div>
                   </div>
 
@@ -40,4 +41,10 @@ const EmployeeSkillCreate = (props: EmployeCreateProps) => {
   );
 };
 
-export default connect(null, { createEmployeeSkill })(EmployeeSkillCreate);
+const mapStoreToProps = (store: any) => {
+  return {
+    employeId: store.auth.user.employeeId
+  };
+};
+
+export default connect(mapStoreToProps, { createEmployeeSkill })(EmployeeSkillCreate);

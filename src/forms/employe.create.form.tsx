@@ -19,10 +19,10 @@ const EmployeForm = (props: EmployeeProps) => {
   return (
     <Formik
       initialValues={{
-        first_name: props.data ? props.data.first_name : "Mohit",
-        last_name: props.data ? props.data.last_name : "Kohli",
-        email: props.data ? props.data.email : "m.kohli@bhavnacorp.com",
-        phone: props.data ? props.data.phone : "1234567890",
+        first_name: props.data ? props.data.first_name : "",
+        last_name: props.data ? props.data.last_name : "",
+        email: props.data ? props.data.email : "",
+        phone: props.data ? props.data.phone : "",
       }}
       onSubmit={(values, actions) => {
         props.handleSubmit(values, empId);

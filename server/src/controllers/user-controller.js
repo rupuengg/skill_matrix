@@ -15,12 +15,13 @@ const getUsers = async (req, res) => {
 
 const updateUserProfile = async (req, res) => {
   try {
+    console.log('files', req.files);
     const emp = await userService.updateUserProfile(req.body, req.user.id);
     return res.status(OK).json({ status: USER.PROFILE_UPDATED, data: emp });
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
-}
+};
 
 const userController = {
   getUsers,

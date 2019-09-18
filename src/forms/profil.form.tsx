@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { profileValidator } from '../validations/profile.validator';
+import Thumb from '../components/Thumb';
 
 interface ProfileProps {
   user: {
@@ -18,15 +19,24 @@ const ProfileForm = (props: any) => {
 
   return (
     <Formik
-      initialValues={props.user}
+      initialValues={{ ...props.user, file: null }}
       onSubmit={(values, actions) => {
         props.handleSubmit(values, profileId);
         actions.setSubmitting(false);
       }}
       validationSchema={profileValidator.profileCreate}
-      render={({ errors, touched, isSubmitting, handleSubmit }) => (
-        <form className="user" autoComplete="false" onSubmit={handleSubmit} noValidate>
+      render={({ values, errors, touched, isSubmitting, handleSubmit, setFieldValue }) => (
+        <form encType="multipart/form-data" className="user" autoComplete="false" onSubmit={handleSubmit} noValidate>
           {/* {err && <span className="main-error">{err.message}</span>} */}
+          <div className="form-group">
+            <label htmlFor="file">Profile pic</label>
+            <br />
+            <input id="file" name="file" type="file" onChange={(event: any) => {
+              setFieldValue("file", event.currentTarget.files[0]);
+            }} />
+            <br />
+            <Thumb file={values.file} />
+          </div>
           <div className="form-group">
             <Field
               component="input"

@@ -1,14 +1,12 @@
 import React, { FormEvent } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/auth.action';
 import { SidebarContext } from '../../../contexts/sidebar.context';
-import defultUserImg from '../iconfinder_8_3898372.svg';
 
 interface HeaderProps {
-  logout: Function
+  logout: Function,
+  render: Function
 }
-
 interface HeaderStates {
   is_profile_show: boolean
 }
@@ -35,8 +33,6 @@ class Header extends React.Component<HeaderProps, HeaderStates> {
   }
 
   render() {
-    const { is_profile_show } = this.state;
-
     return (
       <SidebarContext.Consumer>
         {({ showSidebar }) => (
@@ -56,21 +52,11 @@ class Header extends React.Component<HeaderProps, HeaderStates> {
               </div>
             </form>
 
-            <ul className="navbar-nav ml-auto">
-              <div className="topbar-divider d-none d-sm-block"></div>
-              <li className="nav-item dropdown no-arrow">
-                <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={this.toggleProfile}>
-                  <span className="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                  <img className="img-profile rounded-circle" alt="" src={defultUserImg} />
-                </a>
-                <div className={'dropdown-menu dropdown-menu-right shadow animated--grow-in ' + (is_profile_show ? 'show' : '')} aria-labelledby="userDropdown">
-                  <Link className="dropdown-item" to="/profile"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</Link>
-                  {/* <a className="dropdown-item" href="/"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>Activity Log</a> */}
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal" onClick={this.handleLogout}><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
-                </div>
-              </li>
-            </ul>
+            {this.props.render({
+              ...this.state,
+              toggleProfile: this.toggleProfile,
+              handleLogout: this.handleLogout
+            })}
           </nav>
         )}
       </SidebarContext.Consumer>

@@ -19,6 +19,7 @@ export const userGet = () => async (dispatch: any) => {
       } else {
         history.push('/login');
       }
+      dispatch({ type: SPINNER_HIDE });
     })
     .catch(err => {
       console.log(err);

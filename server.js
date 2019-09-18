@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const fileupload = require('express-fileupload');
 const bearerToken = require('express-bearer-token');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -13,6 +14,10 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(bodyParser.json());
 app.use(bearerToken());
+app.use(fileupload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(bodyParser.json({ type: 'application/json' }));

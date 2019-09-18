@@ -9,7 +9,6 @@ let PrivateRoute = ({ component: Component, ...rest }: any) => (
     const userString = localStorage.getItem('user');
     if (userString) {
       const user = JSON.parse(userString ? userString : "");
-      console.log('localStorage.getItem(\'user\')', user);
       if (Object.keys(user).length === 0) {
         return <Redirect to={{ pathname: '/login' }} />
       } else {

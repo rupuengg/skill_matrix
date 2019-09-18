@@ -4,8 +4,8 @@ module.exports = {
   employeeSkillValidator: {
     create: {
       body: {
-        employee_id: Joi.string().trim().required(),
-        skill_id: Joi.string().trim().required(),
+        employee_id: Joi.number().required(),
+        skill_id: Joi.number().required(),
         skill_version: Joi.string().trim().required(),
         exp_in_month: Joi.string().trim().required(),
         last_used: Joi.string().trim().required()
@@ -18,8 +18,8 @@ module.exports = {
     },
     update: {
       body: {
-        employee_id: Joi.string().trim().required(),
-        skill_id: Joi.string().trim().required(),
+        employee_id: Joi.number().required(),
+        skill_id: Joi.number().required(),
         skill_version: Joi.string().trim().required(),
         exp_in_month: Joi.string().trim().required(),
         last_used: Joi.string().trim().required()
