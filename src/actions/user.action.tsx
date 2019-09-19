@@ -40,8 +40,9 @@ export const profileUpdate = (data: any) => async (dispatch: any) => {
         res.json().then((result: any) => {
           dispatch({
             type: USER_PROFILE_UPDATE,
-            payload: data
+            payload: result.data
           });
+          localStorage.setItem('user', JSON.stringify(result.data));
           dispatch({ type: FLASH_SHOW, payload: result.status });
           dispatch({ type: SPINNER_HIDE });
           setTimeout(() => {

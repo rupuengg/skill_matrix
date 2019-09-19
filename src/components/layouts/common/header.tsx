@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../../../helpers/common';
 // import defultUserImg from '../iconfinder_8_3898372.svg';
@@ -8,11 +9,12 @@ const CommonHeader = (props: any) => {
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
-    if (userString) {
-      const user = JSON.parse(userString ? userString : "");
-      setUser(user);
-    }
-  }, [user.profile_pic]);
+    const user = userString ? JSON.parse(userString ? userString : "") : {};
+    // if (props.user)
+    //   setUser(props.user);
+    // else
+    setUser(user);
+  }, [user]);
 
   const profilePic: string = baseUrl(user.profile_pic);
 
@@ -36,4 +38,10 @@ const CommonHeader = (props: any) => {
   );
 };
 
-export default CommonHeader;
+const mapStoreToProps = (store: any) => {
+  return {
+    user: store.auth.user
+  };
+};
+
+export default connect(mapStoreToProps, null)(CommonHeader);
