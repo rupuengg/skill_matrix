@@ -1,3 +1,4 @@
+const userDao = require('../dao/user-dao');
 const employeeSkillDao = require('../dao/employee-skill-dao');
 
 const createEmployeeSkill = async (data) => {
@@ -5,8 +6,9 @@ const createEmployeeSkill = async (data) => {
   return emp;
 };
 
-const getEmployeeSkills = async (filters) => {
-  const emps = await employeeSkillDao.getEmployeeSkills(filters);
+const getEmployeeSkills = async (userId) => {
+  const user = await userDao.getUsers({ id: userId });
+  const emps = await employeeSkillDao.getEmployeeSkills({ employee_id: user.employeeId });
   return emps;
 };
 

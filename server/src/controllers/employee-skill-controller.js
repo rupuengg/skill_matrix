@@ -13,7 +13,7 @@ const createEmployeeSkill = async (req, res) => {
 
 const getEmployeeSkills = async (req, res) => {
   try {
-    const emps = await employeeSkillService.getEmployeeSkills();
+    const emps = await employeeSkillService.getEmployeeSkills(req.user.id);
     return res.status(OK).json({ data: emps });
   } catch (err) {
     res.status(err.status || SERVER_ERROR).json(err);
