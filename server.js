@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const fileupload = require('express-fileupload');
 const bearerToken = require('express-bearer-token');
 const bodyParser = require('body-parser');
@@ -9,15 +10,15 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(express.static('uploads'));
+app.use('/static', express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(bodyParser.json());
 app.use(bearerToken());
-app.use(fileupload({
-  useTempFiles: true,
-  tempFileDir: '/tmp/'
-}));
+app.use(fileupload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(bodyParser.json({ type: 'application/json' }));

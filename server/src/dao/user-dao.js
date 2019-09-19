@@ -2,7 +2,6 @@ const userModel = require('../models').user;
 const sequelize = require('../models').sequelize;
 
 const createUser = async (data) => {
-  console.log(data);
   const user = await userModel.build(data).save();
   return user;
 };

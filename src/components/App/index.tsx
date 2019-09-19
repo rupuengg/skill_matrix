@@ -38,29 +38,26 @@ const App: React.FC = (props: any) => {
       <Router history={history}>
         <div className="App">
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/" component={Employee} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
 
           {/* Profile */}
           <PrivateRoute exact path="/profile" component={Profile} />
 
-          {/* Dashboard */}
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-
-          {/* Employee */}
+          {/* Admin Pages */}
           <PrivateRoute exact path="/employee" component={Employee} />
           <PrivateRoute exact path="/employee/create" component={EmployeCreate} />
           <PrivateRoute exact path="/employee/update/:id" component={EmployeeUpdate} />
-
-          {/* Skills */}
           <PrivateRoute exact path="/skills" component={Skill} />
           <PrivateRoute exact path="/skills/create" component={SkillCreate} />
           <PrivateRoute exact path="/skills/update/:id" component={SkillUpdate} />
+          {/* Admin Pages End */}
 
-          {/* Employee Skills */}
+          {/* Employee Pages */}
           <PrivateRoute exact path="/employee/skills" component={EmployeeSkill} />
           <PrivateRoute exact path="/employee/skills/create" component={EmployeeSkillCreate} />
           <PrivateRoute exact path="/employee/skills/update/:id" component={EmployeeSkillUpdate} />
+          {/* Employee Pages End */}
           <Spinner />
         </div>
       </Router>

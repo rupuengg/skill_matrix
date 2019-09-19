@@ -2,6 +2,7 @@ import userService from '../services/user-service';
 import { USER_GET, USER_PROFILE_UPDATE } from '../actiontypes/user';
 import { SPINNER_SHOW, SPINNER_HIDE } from '../actiontypes/spinner';
 import { FLASH_SHOW, FLASH_HIDE } from '../actiontypes/flash';
+import { USER_LOGIN } from '../actiontypes/user';
 import { history } from '../helpers/history';
 
 export const userGet = () => async (dispatch: any) => {
@@ -10,6 +11,11 @@ export const userGet = () => async (dispatch: any) => {
     .then(res => {
       if (res.status === 200) {
         res.json().then(result => {
+          localStorage.setItem('user', JSON.stringify(result.data));
+          dispatch({
+            type: USER_LOGIN,
+            payload: result.data
+          });
           dispatch({
             type: USER_GET,
             payload: result.data
@@ -43,7 +49,7 @@ export const profileUpdate = (data: any) => async (dispatch: any) => {
           }, 3000);
         });
       } else {
-        history.push('/login');
+        history.push('/profile');
       }
     })
     .catch(err => {

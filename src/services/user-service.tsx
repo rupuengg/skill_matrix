@@ -1,4 +1,4 @@
-import { reqOptions } from '../helpers/common';
+import { reqOptions, reqOptionsUpload } from '../helpers/common';
 
 const userGet = async () => {
   const request: Request = reqOptions('http://localhost:8080/api/1.0/users', 'GET');
@@ -9,7 +9,11 @@ const userGet = async () => {
 };
 
 const profileUpdate = async (data: any) => {
-  const request: Request = reqOptions('http://localhost:8080/api/1.0/users', 'POST', data);
+  var formData = new FormData();
+  for (let key in data) {
+    formData.append(key, data[key]);
+  }
+  const request: Request = reqOptionsUpload('http://localhost:8080/api/1.0/users', 'POST', formData);
   return fetch(request)
     .then((res: any) => {
       return res;

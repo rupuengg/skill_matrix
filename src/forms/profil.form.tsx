@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import { profileValidator } from '../validations/profile.validator';
 import Thumb from '../components/Thumb';
+import { baseUrl } from '../helpers/common';
 
 interface ProfileProps {
   user: {
@@ -17,9 +18,14 @@ interface ProfileProps {
 const ProfileForm = (props: any) => {
   const profileId = props.user ? props.user.id : null;
 
+  let profilePic: string = "";
+
+  if (props.user)
+    profilePic = baseUrl(props.user.profile_pic);
+
   return (
     <Formik
-      initialValues={{ ...props.user, file: null }}
+      initialValues={{ first_name: props.user.first_name, last_name: props.user.last_name, email: props.user.email, phone: props.user.phone, file: null }}
       onSubmit={(values, actions) => {
         props.handleSubmit(values, profileId);
         actions.setSubmitting(false);
@@ -36,6 +42,11 @@ const ProfileForm = (props: any) => {
             }} />
             <br />
             <Thumb file={values.file} />
+            {!values.file && props.user.profile_pic && <img src={profilePic}
+              alt={props.user.first_name}
+              className="img-thumbnail mt-2"
+              height={100}
+              width={100} />}
           </div>
           <div className="form-group">
             <Field

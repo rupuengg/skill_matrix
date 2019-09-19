@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import defultUserImg from '../iconfinder_8_3898372.svg';
+import { baseUrl } from '../../../helpers/common';
+// import defultUserImg from '../iconfinder_8_3898372.svg';
 
 const CommonHeader = (props: any) => {
-  const [user, setUser] = useState({ first_name: "" });
+  const [user, setUser] = useState({ first_name: "", profile_pic: "" });
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
     if (userString) {
-      const user = JSON.parse(userString ? userString : "")
+      const user = JSON.parse(userString ? userString : "");
       setUser(user);
     }
-  }, []);
+  }, [user.profile_pic]);
+
+  const profilePic: string = baseUrl(user.profile_pic);
 
   return (
     <div>
@@ -20,7 +23,7 @@ const CommonHeader = (props: any) => {
         <li className="nav-item dropdown no-arrow">
           <Link className="nav-link dropdown-toggle" to="/" onClick={props.toggleProfile}>
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{user.first_name}</span>
-            <img className="img-profile rounded-circle" alt="" src={defultUserImg} />
+            <img className="img-profile rounded-circle" alt="" src={profilePic} />
           </Link>
           <div className={'dropdown-menu dropdown-menu-right shadow animated--grow-in ' + (props.is_profile_show ? 'show' : '')}>
             <Link className="dropdown-item" to="/profile"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</Link>
