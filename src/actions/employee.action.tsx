@@ -4,7 +4,7 @@ import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA, EMPLOYEE_ADD, EMPLOYEE_EDIT, EMPLOYEE_
 import { FLASH_SHOW, FLASH_HIDE } from '../actiontypes/flash';
 import { history } from '../helpers/history';
 
-export const getEmployees = () => async (dispatch: any) => {
+export const getEmployees= () => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
   await employeeService.getEmployees()
     .then(res => {
@@ -36,6 +36,19 @@ export const getEmployee = (empId: number) => async (dispatch: any) => {
       }
     });
 };
+// export const getDetails = (empId: number) => async (dispatch: any) => {
+//   await employeeService.getEmployee(empId)
+//     .then(res => {
+//       if (res.status === 200) {
+//         res.json().then((result: any) => {
+//           dispatch({
+//             type: EMPLOYEE_EDIT,
+//             payload: result
+//           })
+//         });
+//       }
+//     });
+// };
 
 export const createEmployee = (data: any) => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });

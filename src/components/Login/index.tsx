@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './index.css';
 import LoginForm from '../../forms/login.form';
 import { authentication } from '../../actions/auth.action';
 import { Link } from 'react-router-dom';
+import pic from './pic.png';
 
 const Login = (props: any) => {
   return (
@@ -14,7 +14,10 @@ const Login = (props: any) => {
             <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                  <div className="col-lg-6 d-none d-lg-block">
+                  <img src={process.env.PUBLIC_URL +'/pic.png'} width="500" height="500" />
+                  {/* <img src={pic} width="500" height="400" /> */}
+                  </div>
 
                   <div className="col-lg-6">
                     <div className="p-5">

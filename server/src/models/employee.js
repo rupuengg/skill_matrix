@@ -10,11 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     employee.belongsTo(models.employee_skills, {
       foreignKey: "id",
       sourceKey: "employee_id"
-    });
-    // employee.belongsTo(models.users, {
-    //   foreignKey: "id",
-    //   as: "employee_id"
-    // });
+    });  
   };
 
   return employee;

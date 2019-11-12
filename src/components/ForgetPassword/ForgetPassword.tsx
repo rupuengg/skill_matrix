@@ -11,7 +11,9 @@ const ForgetPassword = () => {
             <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                  <div className="col-lg-6 d-none d-lg-block">
+                  <img src={process.env.PUBLIC_URL +'/pic.png'} width="500" height="500" />
+                  </div>
 
                   <div className="col-lg-6">
                     <div className="p-5">

@@ -2,6 +2,9 @@ import React, { FormEvent } from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/auth.action';
 import { SidebarContext } from '../../../contexts/sidebar.context';
+import {Nav} from 'react-bootstrap';
+// import ViewEmployee from '../../admin/Dashboard/ViewEmployee';
+
 
 interface HeaderProps {
   logout: Function,
@@ -34,6 +37,7 @@ class Header extends React.Component<HeaderProps, HeaderStates> {
 
   render() {
     return (
+      <div>
       <SidebarContext.Consumer>
         {({ showSidebar }) => (
           <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -43,7 +47,7 @@ class Header extends React.Component<HeaderProps, HeaderStates> {
 
             <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
               <div className="input-group">
-                <input type="text" className="form-control bg-light search small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                <input type="text" className="form-control bg-light search small" placeholder="Search for..." aria-label="Search"  />
                 <div className="input-group-append">
                   <button className="btn btn-primary" type="button">
                     <i className="fas fa-search fa-sm"></i>
@@ -60,6 +64,15 @@ class Header extends React.Component<HeaderProps, HeaderStates> {
           </nav>
         )}
       </SidebarContext.Consumer>
+      <Nav fill variant="tabs">
+  <Nav.Item>
+    <Nav.Link  href="/Dashboard">Dashboard</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link href="/Employee">Employee List</Nav.Link>
+  </Nav.Item>
+</Nav>
+      </div>
     );
   }
 }

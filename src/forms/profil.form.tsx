@@ -17,13 +17,14 @@ interface ProfileProps {
 
 const ProfileForm = (props: any) => {
   const profileId = props.user ? props.user.id : null;
-
+  debugger
   let profilePic: string = "";
-
+  debugger
   if (props.user)
     profilePic = baseUrl(props.user.profile_pic);
-
+    debugger
   return (
+    
     <Formik
       initialValues={{ first_name: props.user.first_name, last_name: props.user.last_name, email: props.user.email, phone: props.user.phone, file: null }}
       onSubmit={(values, actions) => {
@@ -40,7 +41,9 @@ const ProfileForm = (props: any) => {
             <input id="file" name="file" type="file" onChange={(event: any) => {
               setFieldValue("file", event.currentTarget.files[0]);
             }} />
+            
             <br />
+            
             <Thumb file={values.file} />
             {!values.file && props.user.profile_pic && <img src={profilePic}
               alt={props.user.first_name}

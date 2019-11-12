@@ -16,8 +16,7 @@ const reqOptionsWithout = (url: string, type: string, body: any = undefined) => 
   };
 
   // Make Request
-  return new Request(url, init);
-};
+  return new Request(url, init);};
 
 const reqOptions = (url: string, type: string, body: any = undefined) => {
   const token = localStorage.getItem('token');

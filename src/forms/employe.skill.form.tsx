@@ -16,7 +16,6 @@ interface EmployeeSkillProps {
   handleSubmit: Function,
   empId?: string
 }
-
 const EmployeSkillForm = (props: EmployeeSkillProps) => {
   const [employees, setEmployee] = useState([]);
   const [skills, setSkill] = useState([]);
@@ -33,7 +32,7 @@ const EmployeSkillForm = (props: EmployeeSkillProps) => {
         setSkill(res.data);
       });
   }, []);
-  console.log('props.empId', props.empId);
+  // console.log('props.empId', props.empId);
 
   if (props.empId === null) return null;
 

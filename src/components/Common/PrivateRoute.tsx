@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import AdminLayout from '../layouts/admin.layout';
 import EmployeeLayout from '../layouts/employee.layout';
 
+
 let PrivateRoute = ({ component: Component, ...rest }: any) => (
   <Route {...rest} render={(props: any) => {
     const userString = localStorage.getItem('user');

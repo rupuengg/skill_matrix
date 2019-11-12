@@ -20,6 +20,18 @@ const getEmployee = async (empId: number) => {
       console.log('E Error', err);
     });
 };
+// Get Details of all employees for Dashboard
+
+const getDetails = async() => {
+  const request: Request = reqOptions('http://localhost:8080/api/1.0/dashboard/emp-skills' , 'GET')
+    return fetch(request)
+    .then((res: any) => {
+      return res;
+    })
+    .catch((err: any) => {
+      console.log('E Error', err);
+    });
+  };   
 
 const createEmployee = async (data: any) => {
   const options: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'POST', data);
@@ -31,7 +43,6 @@ const createEmployee = async (data: any) => {
       console.log('E Error', err);
     });
 };
-
 const updateEmployee = async (data: any, empId: number) => {
   const options: Request = reqOptions(`http://localhost:8080/api/1.0/employees/${empId}`, 'PUT', data);
   return fetch(options)
@@ -59,7 +70,8 @@ const employeeService = {
   getEmployee,
   createEmployee,
   updateEmployee,
-  deleteEmployee
+  deleteEmployee,
+   getDetails
 };
 
 export default employeeService;

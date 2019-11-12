@@ -10,7 +10,7 @@ const createSkill = async (req, res) => {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
 }
-
+ 
 const getSkills = async (req, res) => {
   try {
     const emps = await skillService.getSkills();
@@ -19,6 +19,16 @@ const getSkills = async (req, res) => {
     res.status(err.status || SERVER_ERROR).json(err);
   }
 };
+
+// const getSkillAll = async (req, res) => {
+//   try {
+//     const emps = await skillService.getSkills();
+//     return res.status(OK).json({ data: emps });
+//   } catch (err) {
+//     res.status(err.status || SERVER_ERROR).json(err);
+//   }
+// };
+
 
 const getSkill = async (req, res) => {
   try {

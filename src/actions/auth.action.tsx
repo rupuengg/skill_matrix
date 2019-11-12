@@ -2,6 +2,7 @@ import authService from '../services/auth-service';
 import { USER_LOGIN, USER_LOGIN_ERROR, USER_LOGGOUT } from '../actiontypes/user';
 import { SPINNER_SHOW, SPINNER_HIDE } from '../actiontypes/spinner';
 import { history } from '../helpers/history';
+import AdminLayout from '../components/layouts/admin.layout';
 
 export const authentication = (email: string, password: string) => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
@@ -17,7 +18,10 @@ export const authentication = (email: string, password: string) => async (dispat
           payload: res.data.user
         });
 
-        history.push('/');
+       // console.log(res.data.user);
+        history.push('/Dashboard');
+  
+      
       } else {
         dispatch({
           type: USER_LOGIN_ERROR,

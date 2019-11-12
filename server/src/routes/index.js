@@ -3,6 +3,7 @@ const authRouter = require('./auth-route');
 const employeeRouter = require('./employee-route');
 const skillRouter = require('./skill-route');
 const employeeSkillRouter = require('./employee-skill-route');
+const dashboardRouter = require('./dashboard-route');
 
 module.exports = function (app, apiVersion) {
   app.use(`/api/${apiVersion}/auth`, authRouter);
@@ -10,4 +11,5 @@ module.exports = function (app, apiVersion) {
   app.use(`/api/${apiVersion}/employees`, employeeRouter);
   app.use(`/api/${apiVersion}/skills`, skillRouter);
   app.use(`/api/${apiVersion}/employee-skills`, employeeSkillRouter);
+  app.use(`/api/${apiVersion}/dashboard`, dashboardRouter);
 };

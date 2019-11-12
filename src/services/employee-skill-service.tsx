@@ -1,5 +1,6 @@
 import { reqOptions } from '../helpers/common';
 
+
 const getEmployeeSkills = async () => {
   const request: Request = reqOptions('http://localhost:8080/api/1.0/employee-skills', 'GET');
   return fetch(request)

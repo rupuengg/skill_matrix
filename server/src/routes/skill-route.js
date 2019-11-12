@@ -11,4 +11,6 @@ router.get('/:id', authenticate, validate(skillValidator.get_employee), catchVal
 router.delete('/:id', authenticate, validate(skillValidator.get_employee), catchValidationErrors, skillController.deleteSkill);
 router.put('/:id', authenticate, validate(skillValidator.update), catchValidationErrors, skillController.updateSkill);
 
+// router.get('/', authenticate, skillController.getSkillAll);
+
 module.exports = router;

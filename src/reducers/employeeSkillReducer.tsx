@@ -6,7 +6,6 @@ const initialState = {
   message: "",
   delete_id: ""
 };
-
 export const employeeSkillReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case EMPLOYEE_SKILL_LIST:

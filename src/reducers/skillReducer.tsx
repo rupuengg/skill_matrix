@@ -1,12 +1,12 @@
 import { SKILL_LIST, SKILL_NO_DATA, SKILL_ADD, SKILL_EDIT, SKILL_DELETE, SKILL_UPDATE } from '../actiontypes/skill';
 
+
 const initialState = {
   lists: [],
   noData: {},
   message: "",
   delete_id: ""
 };
-
 export const skillReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SKILL_LIST:

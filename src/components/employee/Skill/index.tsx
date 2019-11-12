@@ -14,6 +14,8 @@ const EmployeeSkill = (props: any) => {
     props.deleteEmployeeSkill(skillId);
   };
 
+  console.log('llllll', props.skills)
+
   return (
     <div>
       <ol className="breadcrumb">
@@ -61,7 +63,7 @@ const EmployeeSkill = (props: any) => {
                     <tbody>
                       {props.skills.map((skill: any) => (
                         <tr className="odd" key={skill.id}>
-                          <td className="sorting_1">{skill.skill.skill_name}</td>
+                          <td className="sorting_1">{skill.skill && skill.skill.skill_name}</td>
                           <td className="sorting_1">{skill.skill_version}</td>
                           <td className="sorting_1">{skill.exp_in_month}</td>
                           <td className="sorting_1">{skill.last_used}</td>
