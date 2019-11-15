@@ -8,7 +8,6 @@ const Employee = (props: any) => {
     props.getEmployees();
     // eslint-disable-next-line
   }, [props.removeEmpId]);
-
   const handleDelete = (e: FormEvent<HTMLAnchorElement>, empId: number) => {
     e.preventDefault();
     props.deleteEmployee(empId);

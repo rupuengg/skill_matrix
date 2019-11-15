@@ -1,6 +1,7 @@
 import { reqOptions } from '../helpers/common';
 // import { OptionInterface } from '../interfaces/option.interface';
 
+
 const getEmployees = async () => {
   const request: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'GET');
   return fetch(request)
@@ -20,18 +21,16 @@ const getEmployee = async (empId: number) => {
       console.log('E Error', err);
     });
 };
-// Get Details of all employees for Dashboard
 
-const getDetails = async() => {
-  const request: Request = reqOptions('http://localhost:8080/api/1.0/dashboard/emp-skills' , 'GET')
-    return fetch(request)
+// Get Details of all employees for Dashboard
+const getDetailsEmployee = async () => {
+  const request: Request = reqOptions('http://localhost:8080/api/1.0/dashboard/empskills', 'GET');
+  return fetch(request)
+    .then((res: any) => res.json())
     .then((res: any) => {
       return res;
-    })
-    .catch((err: any) => {
-      console.log('E Error', err);
     });
-  };   
+};
 
 const createEmployee = async (data: any) => {
   const options: Request = reqOptions('http://localhost:8080/api/1.0/employees', 'POST', data);
@@ -71,7 +70,7 @@ const employeeService = {
   createEmployee,
   updateEmployee,
   deleteEmployee,
-   getDetails
+  getDetailsEmployee
 };
 
 export default employeeService;

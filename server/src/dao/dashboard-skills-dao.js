@@ -1,6 +1,6 @@
 const employeeModel = require('../models').employee;
 
-const getEmployee = async (filters = {}) => {
+const getDetailsEmployee = async (filters = {}) => {
   const emp = await employeeModel.findAll({
     where: filters,
     order: [['id', 'DESC']]
@@ -8,6 +8,6 @@ const getEmployee = async (filters = {}) => {
  return emp;
 }
 const dashboardSkillDao = {
-  getEmployee,
+  getDetailsEmployee,
 };
 module.exports = dashboardSkillDao;

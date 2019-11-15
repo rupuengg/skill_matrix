@@ -1,8 +1,8 @@
 const dashboardSkillDao = require('../dao/dashboard-skills-dao');
 const employeeSkillDao = require('../dao/employee-skill-dao');
 
-const getEmployee = async () => {
-  const emps = await dashboardSkillDao.getEmployee();
+const getDetailsEmployee = async () => {
+  const emps = await dashboardSkillDao.getDetailsEmployee();
   const emp_skill = await employeeSkillDao.getSkills({});
   const newEmps = emps.map(emp => {
     const tmp = {
@@ -16,15 +16,13 @@ const getEmployee = async () => {
         tmp.sk1.push(element.skill.skill_name)
       }
     });
-    console.log(JSON.stringify(tmp));
     return tmp;
   });
- 
   return {
     newEmps: newEmps,
   }
 }
 const dashboardService = {
-  getEmployee,
+  getDetailsEmployee,
 };
 module.exports = dashboardService;

@@ -6,7 +6,6 @@ import { getEmployeeSkills, deleteEmployeeSkill } from '../../../actions/employe
 const EmployeeSkill = (props: any) => {
   useEffect(() => {
     props.getEmployeeSkills();
-    // eslint-disable-next-line
   }, [props.removeEmpId]);
 
   const handleDelete = (e: FormEvent<HTMLAnchorElement>, skillId: number) => {
@@ -19,14 +18,10 @@ const EmployeeSkill = (props: any) => {
   return (
     <div>
       <ol className="breadcrumb">
-        {/* <li className="breadcrumb-item">
-          <a href="/">Employees</a>
-        </li> */}
         <li className="breadcrumb-item active">Skills</li>
         <li className="add-new"><Link to="/employee/skills/create"><span className="fa fa-plus"></span> Add New</Link></li>
       </ol>
       <div className="card mb-3">
-        {/* <div className="card-header"><i className="fas fa-table"></i>Data Table Example</div> */}
         <div className="card-body">
           <div className="">
             <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">

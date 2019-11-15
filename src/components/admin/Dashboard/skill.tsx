@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDetailsEmployee } from '../../../actions/employee.action';
 
-const ViewEmployee = (props: any) => {
+const SkillEmployee = (props: any) => {
   useEffect(() => {
     props.getDetailsEmployee();
   }, [props.removeEmpId]);
@@ -36,12 +36,12 @@ const ViewEmployee = (props: any) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Return Combine data of Employee Skill */}
                     {props.employees.map((emp: any) => (
                       <tr className="odd" key={emp.emp_id}>
+                         <td className="sorting">
+                      {emp.sk1}</td>
                         <td className="sorting_1">{emp.emp_first_name}  {emp.emp_last_name}</td>
-                    <td className="sorting">
-                      {emp.sk1.join(",")}</td>
+                   
                       </tr>
                     ))}
                   </tbody>
@@ -64,4 +64,4 @@ const mapStoreToProps = (store: any) => {
   }
 }
 
-export default connect(mapStoreToProps, { getDetailsEmployee })(ViewEmployee);
+export default connect(mapStoreToProps, { getDetailsEmployee })(SkillEmployee);

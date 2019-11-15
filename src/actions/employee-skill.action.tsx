@@ -47,7 +47,7 @@ export const createEmployeeSkill = (data: any) => async (dispatch: any) => {
             type: EMPLOYEE_SKILL_ADD,
             payload: result.status
           });
-          history.push('/employee/skills');
+          history.push('//skills');
           dispatch({ type: FLASH_SHOW, payload: result.status });
           setTimeout(() => {
             dispatch({ type: FLASH_HIDE, payload: "" });
@@ -60,7 +60,6 @@ export const createEmployeeSkill = (data: any) => async (dispatch: any) => {
       console.log();
     })
 };
-
 export const editEmployeeSkill = (empId: number) => (dispatch: any) => {
   dispatch({
     type: EMPLOYEE_SKILL_EDIT,

@@ -1,4 +1,4 @@
-import { EMPLOYEE_LIST, EMPLOYEE_NO_DATA, EMPLOYEE_ADD, EMPLOYEE_EDIT, EMPLOYEE_DELETE, EMPLOYEE_UPDATE } from '../actiontypes/employee';
+import { EMPLOYEE_LIST, EMPLOYEE_SKILL, EMPLOYEE_NO_DATA, EMPLOYEE_ADD, EMPLOYEE_EDIT, EMPLOYEE_DELETE, EMPLOYEE_UPDATE } from '../actiontypes/employee';
 
 const initialState = {
   lists: [],
@@ -11,6 +11,8 @@ export const employeeReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case EMPLOYEE_LIST:
       return { ...state, lists: action.payload, editEmp: null, delete_id: "" };
+    case EMPLOYEE_SKILL:
+      return { ...state, lists: action.payload, delete_id: "" }
     case EMPLOYEE_NO_DATA:
       return { ...state, noData: action.payload };
     case EMPLOYEE_ADD:

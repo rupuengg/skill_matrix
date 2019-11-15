@@ -3,7 +3,6 @@ import './App.css';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { USER_LOGIN } from '../../actiontypes/user';
-
 import Login from '../Login';
 // import Home from '../Home';
 import PrivateRoute from '../Common/PrivateRoute';
@@ -46,7 +45,6 @@ const App: React.FC = (props: any) => {
                 {/* LoginDashboard */}
           <PrivateRoute exact path="/Logindashboard" component={LoginDashboard} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
-
           <PrivateRoute exact path="/Dashboard" component={Dashboard} />
         
 
