@@ -25,13 +25,13 @@ const SkillEmployee = (props: any) => {
                         aria-controls="dataTable"
                         aria-sort="ascending"
                         aria-label="Name: activate to sort column descending">
-                        <h4> Employee</h4>
+                        <h4>Skills </h4>
                       </th>
                       <th
                         className="sorting"
                         aria-controls="dataTable"
                         aria-label="Position: activate to sort column ascending">
-                        <h4>Skills</h4>
+                        <h4>Employee</h4>
                       </th>
                     </tr>
                   </thead>
