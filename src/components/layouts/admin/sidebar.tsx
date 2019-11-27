@@ -16,7 +16,7 @@ class Sidebar extends React.Component {
             </a>
             <hr className="sidebar-divider my-0" />
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/Dashboard">
                 <i className="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
               </Link>

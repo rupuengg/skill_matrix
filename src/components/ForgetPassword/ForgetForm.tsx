@@ -10,7 +10,7 @@ const ForgetForm = () => (
                 email: '',
             }}
             onSubmit={values => {
-                console.log(values);
+                console.log();
             }}
         >
             {({ errors, touched, handleSubmit }) => (

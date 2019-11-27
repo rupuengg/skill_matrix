@@ -8,16 +8,12 @@ interface EmployeeUpdateProps {
   updateEmployee: Function,
   match: object
 }
-
 const EmployeeUpdate = (props: any) => {
   useEffect(() => {
     const empId = props.match.params.id;
     props.getEmployee(empId);
-    // eslint-disable-next-line
   }, []);
-
   if (!props.employee) return null;
-
   return (
     <div>
       <ol className="breadcrumb">
@@ -27,17 +23,9 @@ const EmployeeUpdate = (props: any) => {
         <li className="breadcrumb-item active">Edit</li>
       </ol>
       <div className="card mb-3">
-        {/* <div className="card-header"><i className="fas fa-table"></i>Data Table Example</div> */}
         <div className="card-body">
           <div className="">
             <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">
-              {/* <div className="row">
-                <div className="col-sm-12 col-md-6">
-                  <div className="dataTables_length" id="dataTable_length">
-                    <label>Show <select name="dataTable_length" aria-controls="dataTable" className="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
-                  </div>
-                </div>
-              </div> */}
               <div className="row">
                 <div className="col-sm-12">
 

@@ -1,13 +1,25 @@
 const sequelize = require('sequelize');
 const employeeSkillModel = require('../models').employee_skills;
 const skillModel = require('../models').skill;
-
 const createEmployeeSkill = async (data) => {
   const emp = await employeeSkillModel.build(data).save();
   return emp;
 };
-
 const getEmployeeSkills = async (filters) => {
+  const emps = await employeeSkillModel.findAll({
+    where: filters,
+    order: [['id', 'DESC']],
+    include: [{
+      model: skillModel,
+      on: {
+        'id': { [sequelize.Op.eq]: sequelize.col('employee_skills.skill_id') },
+      }
+    }]
+  });
+  return emps;
+}
+
+const getSkills = async (filters) => {
   const emps = await employeeSkillModel.findAll({
     where: filters,
     order: [['id', 'DESC']],
@@ -40,12 +52,15 @@ const updateEmployeeSkill = async (data, filters) => {
   return emp[0];
 };
 
+
+
 const employeeSkillDao = {
   createEmployeeSkill,
   getEmployeeSkills,
   getEmployeeSkill,
   deleteEmployeeSkill,
-  updateEmployeeSkill
+  updateEmployeeSkill,
+  getSkills
 };
 
 module.exports = employeeSkillDao;

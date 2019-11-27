@@ -13,6 +13,13 @@ const getSkills = async (filters) => {
   return emps;
 }
 
+// const getDetails = async (filters) => {
+//   const emps = await skillModel.findAll({
+//     where: filters,
+//     order: [['id', 'DESC']]
+//   });
+//   return emps;
+// }
 const getSkill = async (filters) => {
   const emp = await skillModel.findOne({
     where: filters
@@ -37,7 +44,8 @@ const employeeDao = {
   getSkills,
   getSkill,
   deleteSkill,
-  updateSkill
+  updateSkill,
+  // getDetails 
 };
 
 module.exports = employeeDao;

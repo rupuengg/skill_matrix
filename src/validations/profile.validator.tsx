@@ -11,3 +11,4 @@ const profileCreate = Yup.object().shape({
 export const profileValidator = {
   profileCreate
 };
+

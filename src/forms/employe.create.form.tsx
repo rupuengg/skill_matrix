@@ -15,7 +15,7 @@ interface EmployeeProps {
 
 const EmployeForm = (props: EmployeeProps) => {
   const empId = props.data ? props.data.id : null;
-  console.log('props.data', props.data);
+ 
   return (
     <Formik
       initialValues={{
@@ -24,7 +24,7 @@ const EmployeForm = (props: EmployeeProps) => {
         email: props.data ? props.data.email : "",
         phone: props.data ? props.data.phone : "",
       }}
-      onSubmit={(values, actions) => {
+      onSubmit={(values) => {
         props.handleSubmit(values, empId);
       }}
       validationSchema={employeeValidator.employeeCreate}
@@ -65,7 +65,7 @@ const EmployeForm = (props: EmployeeProps) => {
             <div className="error-box"><span className={"error " + (errors.email && touched.email ? "show" : "")}>{errors.email}</span></div>
           </div>
           <div className="form-group">
-            <Field
+            <Field 
               component="input"
               type="text"
               className="form-control form-control-user"

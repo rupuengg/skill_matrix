@@ -3,7 +3,6 @@ import './App.css';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { USER_LOGIN } from '../../actiontypes/user';
-
 import Login from '../Login';
 // import Home from '../Home';
 import PrivateRoute from '../Common/PrivateRoute';
@@ -20,10 +19,12 @@ import SkillCreate from '../admin/Skill/create';
 import SkillUpdate from '../admin/Skill/update';
 import ForgetPassword from '../ForgetPassword/ForgetPassword';
 import SidebarProvider from '../../providers/sidebar.provider';
-
+import LoginDashboard from '../Login/LoginDashboard';
 import EmployeeSkill from '../employee/Skill';
 import EmployeeSkillCreate from '../employee/Skill/create';
 import EmployeeSkillUpdate from '../employee/Skill/update';
+import Home from '../Home';
+import { Redirect } from 'react-router-dom';
 
 const App: React.FC = (props: any) => {
   useEffect(() => {
@@ -32,14 +33,20 @@ const App: React.FC = (props: any) => {
       const user = JSON.parse(userString ? userString : "")
       props.userSet(user);
     }
+
   });
   return (
     <SidebarProvider>
       <Router history={history}>
         <div className="App">
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={Home} />
+          {/* <PrivateRoute exact path="/" component={LoginDashboard} /> */}
+                {/* LoginDashboard */}
+          <PrivateRoute exact path="/Logindashboard" component={LoginDashboard} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
+          <PrivateRoute exact path="/Dashboard" component={Dashboard} />
+        
 
           {/* Profile */}
           <PrivateRoute exact path="/profile" component={Profile} />
