@@ -1,0 +1,12 @@
+.radio_button{
+    margin-bottom: 0.5rem;
+    text-align: right;
+    margin-top: 0.5rem;
+    margin-right: 20px;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.radio-inline{
+  margin-right: 15px; 
+}
