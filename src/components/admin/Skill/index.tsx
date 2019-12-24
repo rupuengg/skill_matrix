@@ -1,7 +1,7 @@
-import React, { useEffect, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getSkills, deleteSkill } from '../../../actions/skill.action';
+import React, { useEffect, FormEvent } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getSkills, deleteSkill } from "../../../actions/skill.action";
 
 const Employee = (props: any) => {
   useEffect(() => {
@@ -21,25 +21,41 @@ const Employee = (props: any) => {
           <a href="/">Employees</a>
         </li> */}
         <li className="breadcrumb-item active">Skills</li>
-        <li className="add-new"><Link to="/skills/create"><span className="fa fa-plus"></span> Add New</Link></li>
+        <li className="add-new">
+          <Link to="/skills/create">
+            <span className="fa fa-plus"></span> Add New
+          </Link>
+        </li>
       </ol>
       <div className="card mb-3">
         <div className="card-body">
           <div className="">
-            <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">
+            <div
+              id="dataTable_wrapper"
+              className="dataTables_wrapper dt-bootstrap4"
+            >
               <div className="row">
                 <div className="col-sm-12">
-                  <table className="table table-bordered dataTable" id="dataTable">
+                  <table
+                    className="table table-bordered dataTable"
+                    id="dataTable"
+                  >
                     <thead>
                       <tr role="row">
                         <th
                           className="sorting_asc"
                           aria-controls="dataTable"
                           aria-sort="ascending"
-                          aria-label="Name: activate to sort column descending">Skillname</th>
+                          aria-label="Name: activate to sort column descending"
+                        >
+                          Skillname
+                        </th>
                         <th
                           aria-controls="dataTable"
-                          aria-label="Age: activate to sort column ascending">&nbsp;</th>
+                          aria-label="Age: activate to sort column ascending"
+                        >
+                          &nbsp;
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -51,18 +67,21 @@ const Employee = (props: any) => {
                               <i className="fa fa-edit"></i>
                             </Link>
                             &nbsp;&nbsp;&nbsp;
-                            <Link to="/" onClick={(e) => handleDelete(e, skill.id)}>
+                            <Link
+                              to="/"
+                              onClick={e => handleDelete(e, skill.id)}
+                            >
                               <i className="fa fa-trash"></i>
                             </Link>
                           </td>
                         </tr>
                       ))}
 
-                      {!props.skills.length && <tr>
-                        <td colSpan={5}>
-                          No records found
-                        </td>
-                      </tr>}
+                      {!props.skills.length && (
+                        <tr>
+                          <td colSpan={5}>No records found</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -71,7 +90,7 @@ const Employee = (props: any) => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
@@ -79,7 +98,7 @@ const mapStoreToProps = (store: any) => {
   return {
     skills: store.skill.lists,
     removeEmpId: store.skill.delete_id
-  }
-}
+  };
+};
 
 export default connect(mapStoreToProps, { getSkills, deleteSkill })(Employee);

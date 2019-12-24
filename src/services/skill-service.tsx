@@ -1,8 +1,12 @@
-import { reqOptions } from '../helpers/common';
+import { reqOptions } from "../helpers/common";
 // import { OptionInterface } from '../interfaces/option.interface';
 
 const getSkills = async () => {
-  const request: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'GET');
+  debugger;
+  const request: Request = reqOptions(
+    "http://localhost:8080/api/1.0/skills",
+    "GET"
+  );
   return fetch(request)
     .then((res: any) => res.json())
     .then((res: any) => {
@@ -11,47 +15,61 @@ const getSkills = async () => {
 };
 
 const getSkill = async (skillId: number) => {
-  const request: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'GET');
+  const request: Request = reqOptions(
+    `http://localhost:8080/api/1.0/skills/${skillId}`,
+    "GET"
+  );
   return fetch(request)
     .then((res: any) => {
       return res;
     })
     .catch((err: any) => {
-      console.log('E Error', err);
+      console.log("E Error", err);
     });
 };
 
 const createSkill = async (data: any) => {
-  const options: Request = reqOptions('http://localhost:8080/api/1.0/skills', 'POST', data);
+  const options: Request = reqOptions(
+    "http://localhost:8080/api/1.0/skills",
+    "POST",
+    data
+  );
   return fetch(options)
     .then((res: any) => {
       return res;
     })
     .catch((err: any) => {
-      console.log('E Error', err);
+      console.log("E Error", err);
     });
 };
 
 const updateSkill = async (data: any, skillId: number) => {
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'PUT', data);
+  const options: Request = reqOptions(
+    `http://localhost:8080/api/1.0/skills/${skillId}`,
+    "PUT",
+    data
+  );
   return fetch(options)
     .then((res: any) => {
       return res;
     })
     .catch((err: any) => {
-      console.log('E Error', err);
-    })
+      console.log("E Error", err);
+    });
 };
 
 const deleteSkill = async (skillId: number) => {
-  const options: Request = reqOptions(`http://localhost:8080/api/1.0/skills/${skillId}`, 'DELETE');
+  const options: Request = reqOptions(
+    `http://localhost:8080/api/1.0/skills/${skillId}`,
+    "DELETE"
+  );
   return fetch(options)
     .then((res: any) => {
       return res;
     })
     .catch((err: any) => {
-      console.log('E Error', err);
-    })
+      console.log("E Error", err);
+    });
 };
 
 const skillService = {

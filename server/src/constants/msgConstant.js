@@ -22,6 +22,11 @@ module.exports = {
     DELETED: "Skill deleted successfully"
   },
   USER: {
-    "PROFILE_UPDATED": "Profile has been udpated"
+    PROFILE_UPDATED: "Profile has been udpated"
+  },
+  PROJECT: {
+    CREATED: "Project created successfully",
+    UPDATED: "Project updated successfully",
+    DELETED: "Project deleted successfully"
   }
 };

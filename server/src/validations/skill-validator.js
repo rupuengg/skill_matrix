@@ -1,10 +1,12 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 module.exports = {
   skillValidator: {
     create: {
       body: {
-        skill_name: Joi.string().trim().required(),
+        skill_name: Joi.string()
+          .trim()
+          .required()
       }
     },
     get_employee: {
@@ -14,11 +16,13 @@ module.exports = {
     },
     update: {
       body: {
-        skill_name: Joi.string().trim().required(),
+        skill_name: Joi.string()
+          .trim()
+          .required()
       },
       params: {
         id: Joi.number().required()
       }
-    },
+    }
   }
 };

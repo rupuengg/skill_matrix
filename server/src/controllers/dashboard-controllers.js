@@ -1,5 +1,5 @@
-const dashboardService = require('../services/dashboard-service');
-const { OK, SERVER_ERROR } = require('../constants/httpConstant');
+const dashboardService = require("../services/dashboard-service");
+const { OK, SERVER_ERROR } = require("../constants/httpConstant");
 
 const getDetailsEmployee = async (req, res) => {
   try {
@@ -24,4 +24,3 @@ const dashboardController = {
 };
 
 module.exports = dashboardController;
-
