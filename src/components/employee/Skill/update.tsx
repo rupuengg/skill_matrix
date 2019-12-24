@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import EmployeSkillForm from '../../../forms/employe.skill.form';
-import { getEmployeeSkill, updateEmployeeSkill } from '../../../actions/employee-skill.action';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import EmployeSkillForm from "../../../forms/employe.skill.form";
+import {
+  getEmployeeSkill,
+  updateEmployeeSkill
+} from "../../../actions/employee-skill.action";
+import { getProficiencyLevel } from "../../../actions/lookUpMaster.action";
 
 interface EmployeeUpdateProps {
-  updateEmployee: Function,
-  match: object
+  updateEmployee: Function;
+  match: object;
 }
 
 const EmployeeSkillUpdate = (props: any) => {
-  console.log('props.employee.skills', props.skill);
+  console.log("props.employee.skills", props.skill);
   useEffect(() => {
     const empId = props.match.params.id;
     props.getEmployeeSkill(empId);
@@ -30,30 +34,39 @@ const EmployeeSkillUpdate = (props: any) => {
       <div className="card mb-3">
         <div className="card-body">
           <div className="">
-            <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">
+            <div
+              id="dataTable_wrapper"
+              className="dataTables_wrapper dt-bootstrap4"
+            >
               <div className="row">
                 <div className="col-sm-12">
-
                   <div className="col-lg-6">
                     <div className="p-1">
-                      <EmployeSkillForm handleSubmit={props.updateEmployeeSkill} data={props.skill} />
+                      <EmployeSkillForm
+                        handleSubmit={props.updateEmployeeSkill}
+                        data={props.skill}
+                      />
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
 const mapStoreToProps = (store: any) => {
   return {
     skill: store.employeeSkill.editEmp
+    //lookUpMaster: store.lookUpMaster.lists
   };
 };
 
-export default connect(mapStoreToProps, { getEmployeeSkill, updateEmployeeSkill })(EmployeeSkillUpdate);
+export default connect(mapStoreToProps, {
+  getEmployeeSkill,
+  updateEmployeeSkill,
+  getProficiencyLevel
+})(EmployeeSkillUpdate);

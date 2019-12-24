@@ -13,6 +13,18 @@ const getProjects = async (clientId: number) => {
     });
 };
 
+const getProjectsByEmployeeID = async () => {
+  const request: Request = reqOptions(
+    `http://localhost:8080/api/1.0/employeeProjectDetails/3`,
+    "GET"
+  );
+  return fetch(request)
+    .then((res: any) => res.json())
+    .then((res: any) => {
+      return res;
+    });
+};
+
 // const getSkill = async (projectId: number) => {
 //   const request: Request = reqOptions(
 //     `http://localhost:8080/api/1.0/projects/${projectId}`,
@@ -72,7 +84,8 @@ const getProjects = async (clientId: number) => {
 // };
 
 const projectService = {
-  getProjects
+  getProjects,
+  getProjectsByEmployeeID,
   // getSkill,
   // createSkill,
   // updateSkill,

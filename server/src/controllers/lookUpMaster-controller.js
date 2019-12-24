@@ -4,9 +4,7 @@ const { OK, SERVER_ERROR } = require("../constants/httpConstant");
 const getLookUpData = async (req, res) => {
   try {
     const lookUp = await lookUpMasterService.getLookUpData();
-    return res.status(OK).json({
-      data: lookUp
-    });
+    return res.status(OK).json({ data: lookUp });
   } catch (err) {
     res.status(err.status || SERVER_ERROR).json(err);
   }

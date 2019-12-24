@@ -13,6 +13,17 @@ const getProjectSkills = async (req, res) => {
   }
 };
 
+const getProjectSkillsByEmpID = async (req, res) => {
+  try {
+    const emps = await projectSkillService.getProjectSkillsByEmpID(
+      req.params.projectId
+    );
+    return res.status(OK).json({ data: emps });
+  } catch (err) {
+    res.status(err.status || SERVER_ERROR).json(err);
+  }
+};
+
 const upsertProjectSkills = async (req, res) => {
   try {
     const emp = await projectSkillService.upsertProjectSkills(req.body);
@@ -25,7 +36,8 @@ const upsertProjectSkills = async (req, res) => {
 
 const projectSkillController = {
   getProjectSkills,
-  upsertProjectSkills
+  getProjectSkillsByEmpID,
+  upsertProjectSkills,
 };
 
 module.exports = projectSkillController;

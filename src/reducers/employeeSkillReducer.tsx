@@ -1,10 +1,19 @@
-import { EMPLOYEE_SKILL_LIST, EMPLOYEE_SKILL_NO_DATA, EMPLOYEE_SKILL_ADD, EMPLOYEE_SKILL_EDIT, EMPLOYEE_SKILL_DELETE, EMPLOYEE_SKILL_UPDATE } from '../actiontypes/employee.skill';
+import {
+  EMPLOYEE_SKILL_LIST,
+  EMPLOYEE_SKILL_NO_DATA,
+  EMPLOYEE_SKILL_ADD,
+  EMPLOYEE_SKILL_EDIT,
+  EMPLOYEE_SKILL_DELETE,
+  EMPLOYEE_SKILL_UPDATE,
+  EMPLOYEE_PROJECT_NAME
+} from "../actiontypes/employee.skill";
 
 const initialState = {
   lists: [],
   noData: {},
   message: "",
-  delete_id: ""
+  delete_id: "",
+  projectName: ""
 };
 export const employeeSkillReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -19,8 +28,14 @@ export const employeeSkillReducer = (state = initialState, action: any) => {
     case EMPLOYEE_SKILL_UPDATE:
       return { ...state, message: action.payload };
     case EMPLOYEE_SKILL_DELETE:
-      return { ...state, message: action.payload.status, delete_id: action.payload.deleteId };
+      return {
+        ...state,
+        message: action.payload.status,
+        delete_id: action.payload.deleteId
+      };
+    case EMPLOYEE_PROJECT_NAME:
+      return { ...state, projectName: action.payload };
     default:
       return { ...state };
   }
-}
+};

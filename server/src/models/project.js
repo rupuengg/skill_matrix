@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "LookUpClientID",
       targetKey: "LookUpID"
     });
+    project.hasOne(models.EmployeeProjectDetails, {
+      foreignKey: "ProjectID",
+      targetKey: "ProjectID"
+    });
   };
   return project;
 };

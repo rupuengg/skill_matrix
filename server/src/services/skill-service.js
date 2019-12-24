@@ -1,21 +1,21 @@
-const skillDao = require('../dao/skill-dao');
+const skillDao = require("../dao/skill-dao");
 
-const createSkill = async (data) => {
+const createSkill = async data => {
   const emp = await skillDao.createSkill(data);
   return emp;
 };
 
-const getSkills = async (filters) => {
+const getSkills = async filters => {
   const emps = await skillDao.getSkills(filters);
   return emps;
 };
 
-const getSkill = async (emp_id) => {
+const getSkill = async emp_id => {
   const emps = await skillDao.getSkill({ id: emp_id });
   return emps;
 };
 
-const deleteSkill = async (emp_id) => {
+const deleteSkill = async emp_id => {
   const emps = await skillDao.deleteSkill({ id: emp_id });
   return emps;
 };

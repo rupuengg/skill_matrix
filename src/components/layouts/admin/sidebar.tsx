@@ -1,14 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { SidebarContext } from '../../../contexts/sidebar.context';
+import React from "react";
+import { Link } from "react-router-dom";
+import { SidebarContext } from "../../../contexts/sidebar.context";
 
 class Sidebar extends React.Component {
   render() {
     return (
       <SidebarContext.Consumer>
         {({ showSidebar }) => (
-          <ul className={"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " + (showSidebar ? "toggled" : "")} id="accordionSidebar">
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+          <ul
+            className={
+              "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " +
+              (showSidebar ? "toggled" : "")
+            }
+            id="accordionSidebar"
+          >
+            <a
+              className="sidebar-brand d-flex align-items-center justify-content-center"
+              href="/"
+            >
               <div className="sidebar-brand-icon rotate-n-15">
                 <i className="fas fa-laugh-wink"></i>
               </div>
@@ -22,9 +31,7 @@ class Sidebar extends React.Component {
               </Link>
             </li>
             <hr className="sidebar-divider" />
-            <div className="sidebar-heading">
-              Interface
-          </div>
+            <div className="sidebar-heading">Interface</div>
             <li className="nav-item">
               <Link className="nav-link" to="/employee">
                 <i className="fas fa-fw fa-cog"></i>
@@ -36,6 +43,13 @@ class Sidebar extends React.Component {
               <Link className="nav-link" to="/skills">
                 <i className="fas fa-fw fa-wrench"></i>
                 <span>Skills</span>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/projects">
+                <i className="fas fa-fw fa-wrench"></i>
+                <span>Project</span>
               </Link>
             </li>
           </ul>

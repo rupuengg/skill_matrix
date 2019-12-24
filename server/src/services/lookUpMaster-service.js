@@ -9,6 +9,7 @@ const getLookupMasterDataByID = async type => {
   const lookupMasterData = await lookUpMasterDao.getLookupMasterDataByID({
     Type: type
   });
+  // const lookupMasterData = "1";
   return lookupMasterData;
 };
 

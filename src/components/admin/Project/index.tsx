@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProjects } from "../../../actions/project.action";
 import { getlookUpData } from "../../../actions/lookUpMaster.action";
-// import { getSkills, deleteSkill } from "../../../actions/skill.action";
 import {
   getProjectSkills,
   upsertProjectSkills
@@ -318,5 +317,5 @@ export default connect(mapStoreToProps, {
   getlookUpData,
   getProjects,
   getProjectSkills,
-  upsertProjectSkills
+  upsertProjectSkills,
 })(Project);

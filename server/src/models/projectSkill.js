@@ -7,11 +7,8 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      //ProjectID: { type: DataTypes.INTEGER, defaultValue: 0 },
-      // ProjectID: DataTypes.INTEGER,
-      // SkillID: { type: DataTypes.INTEGER, defaultValue: 0 },
+      ProjectID: DataTypes.INTEGER,
       SkillID: DataTypes.INTEGER,
-
       LookUpProficiencyID: DataTypes.INTEGER,
       CreatedBy: DataTypes.INTEGER
     },

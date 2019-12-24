@@ -1,6 +1,6 @@
-const skillService = require('../services/skill-service');
-const { OK, SERVER_ERROR } = require('../constants/httpConstant');
-const { SKILL } = require('../constants/msgConstant');
+const skillService = require("../services/skill-service");
+const { OK, SERVER_ERROR } = require("../constants/httpConstant");
+const { SKILL } = require("../constants/msgConstant");
 
 const createSkill = async (req, res) => {
   try {
@@ -9,9 +9,10 @@ const createSkill = async (req, res) => {
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
-}
- 
+};
+
 const getSkills = async (req, res) => {
+  debugger;
   try {
     const emps = await skillService.getSkills();
     return res.status(OK).json({ data: emps });
@@ -28,7 +29,6 @@ const getSkills = async (req, res) => {
 //     res.status(err.status || SERVER_ERROR).json(err);
 //   }
 // };
-
 
 const getSkill = async (req, res) => {
   try {
@@ -55,7 +55,7 @@ const updateSkill = async (req, res) => {
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
-}
+};
 
 const skillController = {
   createSkill,

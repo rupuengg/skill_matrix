@@ -10,6 +10,8 @@ const {
 // } = require("../validations/project-skill-validator");
 const projectSkillController = require("../controllers/projectSkill-controller");
 
+//router.get("/:projectId", projectSkillController.getProjectSkills);
+router.get("/:projectId", projectSkillController.getProjectSkillsByEmpID);
 router.get("/:projectId", projectSkillController.getProjectSkills);
 router.post("/", projectSkillController.upsertProjectSkills);
 

@@ -1,6 +1,6 @@
-const employeeSkillService = require('../services/employee-skill-service');
-const { OK, SERVER_ERROR } = require('../constants/httpConstant');
-const { EMPLOYEE_SKILL } = require('../constants/msgConstant');
+const employeeSkillService = require("../services/employee-skill-service");
+const { OK, SERVER_ERROR } = require("../constants/httpConstant");
+const { EMPLOYEE_SKILL } = require("../constants/msgConstant");
 
 const createEmployeeSkill = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ const createEmployeeSkill = async (req, res) => {
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
-}
+};
 
 const getEmployeeSkills = async (req, res) => {
   try {
@@ -32,7 +32,9 @@ const getEmployeeSkill = async (req, res) => {
 const deleteEmployeeSkill = async (req, res) => {
   try {
     await employeeSkillService.deleteEmployeeSkill(req.params.id);
-    return res.status(OK).json({ status: EMPLOYEE_SKILL.DELETED, data: req.params.id });
+    return res
+      .status(OK)
+      .json({ status: EMPLOYEE_SKILL.DELETED, data: req.params.id });
   } catch (err) {
     res.status(err.status || SERVER_ERROR).json(err);
   }
@@ -40,12 +42,15 @@ const deleteEmployeeSkill = async (req, res) => {
 
 const updateEmployeeSkill = async (req, res) => {
   try {
-    const emp = await employeeSkillService.updateEmployeeSkill(req.body, req.params.id);
+    const emp = await employeeSkillService.updateEmployeeSkill(
+      req.body,
+      req.params.id
+    );
     return res.status(OK).json({ status: EMPLOYEE_SKILL.UPDATED, data: emp });
   } catch (err) {
     return res.status(err.status || SERVER_ERROR).json(err);
   }
-}
+};
 
 const employeeSkillController = {
   createEmployeeSkill,
