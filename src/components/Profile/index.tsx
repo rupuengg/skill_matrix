@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
-import ProfileForm from '../../forms/profil.form';
-import { userGet, profileUpdate } from '../../actions/user.action';
+import ProfileForm from "../../forms/profil.form";
+import { userGet, profileUpdate } from "../../actions/user.action";
 
 const Profile = (props: any) => {
   useEffect(() => {
@@ -21,21 +21,25 @@ const Profile = (props: any) => {
       <div className="card mb-3">
         <div className="card-body">
           <div className="">
-            <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4">
+            <div
+              id="dataTable_wrapper"
+              className="dataTables_wrapper dt-bootstrap4"
+            >
               <div className="row">
-
                 <div className="col-lg-6">
                   <div className="p-1">
-                    <ProfileForm handleSubmit={props.profileUpdate} user={props.user} />
+                    <ProfileForm
+                      handleSubmit={props.profileUpdate}
+                      user={props.user}
+                    />
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

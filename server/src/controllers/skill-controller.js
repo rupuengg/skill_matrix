@@ -12,7 +12,6 @@ const createSkill = async (req, res) => {
 };
 
 const getSkills = async (req, res) => {
-  debugger;
   try {
     const emps = await skillService.getSkills();
     return res.status(OK).json({ data: emps });
@@ -41,7 +40,7 @@ const getSkill = async (req, res) => {
 
 const deleteSkill = async (req, res) => {
   try {
-    const emp = await skillService.deleteSkill(req.params.id);
+    await skillService.deleteSkill(req.params.id);
     return res.status(OK).json({ status: SKILL.DELETED, data: req.params.id });
   } catch (err) {
     res.status(err.status || SERVER_ERROR).json(err);

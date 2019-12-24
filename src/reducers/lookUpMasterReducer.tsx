@@ -1,11 +1,4 @@
-import {
-  LOOKUP_LIST,
-  LOOKUP_NO_DATA
-  // PROJECT_ADD,
-  // PROJECT_EDIT,
-  // PROJECT_DELETE,
-  // PROJECT_UPDATE
-} from "../actiontypes/lookUpMaster";
+import { LOOKUP_LIST } from "../actiontypes/lookUpMaster";
 
 const initialState = {
   lists: [],

@@ -1,6 +1,5 @@
 const projectService = require("../services/project-service");
 const { OK, SERVER_ERROR } = require("../constants/httpConstant");
-const { PROJECT } = require("../constants/msgConstant");
 
 // const createProject = async (req, res) => {
 //   try {
@@ -12,7 +11,6 @@ const { PROJECT } = require("../constants/msgConstant");
 // };
 
 const getProjects = async (req, res) => {
-  debugger;
   try {
     const emps = await projectService.getProjects(req.params.clientId);
     return res.status(OK).json({ data: emps });

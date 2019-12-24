@@ -24,7 +24,6 @@ import EmployeeSkill from "../employee/Skill";
 import EmployeeSkillCreate from "../employee/Skill/create";
 import EmployeeSkillUpdate from "../employee/Skill/update";
 import Home from "../Home";
-import { Redirect } from "react-router-dom";
 import Project from "../admin/Project";
 
 const App: React.FC = (props: any) => {

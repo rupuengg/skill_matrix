@@ -2,7 +2,6 @@ import { reqOptions } from "../helpers/common";
 // import { OptionInterface } from '../interfaces/option.interface';
 
 const getSkills = async () => {
-  debugger;
   const request: Request = reqOptions(
     "http://localhost:8080/api/1.0/skills",
     "GET"

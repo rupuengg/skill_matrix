@@ -1,12 +1,11 @@
-import React, { useEffect, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getDetailsEmployee } from "../../../actions/employee.action";
 
 const ViewEmployee = (props: any) => {
   useEffect(() => {
     props.getDetailsEmployee();
-  }, [props.removeEmpId]);
+  });
   console.log("props.employees", props.employees);
 
   return (
@@ -45,15 +44,15 @@ const ViewEmployee = (props: any) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* Return Combine data of Employee Skill */}
-                      {props.employees.map((emp: any) => (
-                        <tr className="odd" key={emp.emp_id}>
-                          <td className="sorting_1">
-                            {emp.emp_first_name} {emp.emp_last_name}
-                          </td>
-                          <td className="sorting">{emp.sk1.join(", ")} </td>
-                        </tr>
-                      ))}
+                      {props.employees &&
+                        props.employees.map((emp: any) => (
+                          <tr className="odd" key={emp.emp_id}>
+                            <td className="sorting_1">
+                              {emp.emp_first_name} {emp.emp_last_name}
+                            </td>
+                            <td className="sorting">{emp.sk1.join(", ")} </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>

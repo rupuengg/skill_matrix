@@ -34,7 +34,7 @@ const EmployeSkillForm = (props: EmployeeSkillProps) => {
       setSkill(res.data);
     });
     lookupMasterService.getProficiencyLevel("Proficiency").then(res => {
-      if (res.data != undefined) {
+      if (res.data !== undefined) {
         setProficiencyLevel(res.data);
       }
     });
@@ -61,7 +61,6 @@ const EmployeSkillForm = (props: EmployeeSkillProps) => {
         CreatedBy: 1
       }}
       onSubmit={(values, actions) => {
-        debugger;
         console.log(values);
         props.handleSubmit(values, empId);
       }}

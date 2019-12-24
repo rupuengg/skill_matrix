@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('employee_skills', {
+    return queryInterface.createTable("employee_skills", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,10 +29,22 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      ProficiencyID: {
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
+      CreatedBy: {
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
+      LastModifiedBy: {
+        allowNull: true,
+        type: Sequelize.INTEGER
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('employee_skills');
+    return queryInterface.dropTable("employee_skills");
   }
 };

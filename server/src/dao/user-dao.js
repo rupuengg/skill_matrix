@@ -1,22 +1,22 @@
-const userModel = require('../models').user;
-const sequelize = require('../models').sequelize;
+const userModel = require("../models").user;
+const sequelize = require("../models").sequelize;
 
-const createUser = async (data) => {
+const createUser = async data => {
   const user = await userModel.build(data).save();
   return user;
 };
 
-const getUsers = async (filters) => {
+const getUsers = async filters => {
   const users = await userModel.findOne({
     where: filters
   });
   return users;
 };
 
-const getUserByEmail = async (email) => {
+const getUserByEmail = async email => {
   const user = await userModel.findOne({
     where: sequelize.where(
-      sequelize.fn('lower', sequelize.col('email')),
+      sequelize.fn("lower", sequelize.col("email")),
       email.toLowerCase()
     )
   });

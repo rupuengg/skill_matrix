@@ -15,9 +15,9 @@ export const projectSkillReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case PROJECT_SKILL_LIST:
       let projectSkills = action.payload;
-      if (action.payload != undefined && action.payload.length > 0) {
+      if (action.payload !== undefined && action.payload.length > 0) {
         projectSkills = action.payload.map((ps: any) => {
-          if (ps.ProjectSkillMapping != undefined) {
+          if (ps.ProjectSkillMapping !== undefined) {
             ps.IsChecked = true;
           } else {
             ps.IsChecked = false;

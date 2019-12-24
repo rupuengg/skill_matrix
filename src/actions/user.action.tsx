@@ -1,17 +1,18 @@
-import userService from '../services/user-service';
-import { USER_GET, USER_PROFILE_UPDATE } from '../actiontypes/user';
-import { SPINNER_SHOW, SPINNER_HIDE } from '../actiontypes/spinner';
-import { FLASH_SHOW, FLASH_HIDE } from '../actiontypes/flash';
-import { USER_LOGIN } from '../actiontypes/user';
-import { history } from '../helpers/history';
+import userService from "../services/user-service";
+import { USER_GET, USER_PROFILE_UPDATE } from "../actiontypes/user";
+import { SPINNER_SHOW, SPINNER_HIDE } from "../actiontypes/spinner";
+import { FLASH_SHOW, FLASH_HIDE } from "../actiontypes/flash";
+import { USER_LOGIN } from "../actiontypes/user";
+import { history } from "../helpers/history";
 
 export const userGet = () => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
-  await userService.userGet()
+  await userService
+    .userGet()
     .then(res => {
       if (res.status === 200) {
         res.json().then(result => {
-          localStorage.setItem('user', JSON.stringify(result.data));
+          localStorage.setItem("user", JSON.stringify(result.data));
           dispatch({
             type: USER_LOGIN,
             payload: result.data
@@ -23,7 +24,7 @@ export const userGet = () => async (dispatch: any) => {
           dispatch({ type: SPINNER_HIDE });
         });
       } else {
-        history.push('/login');
+        history.push("/login");
       }
       dispatch({ type: SPINNER_HIDE });
     })
@@ -34,7 +35,8 @@ export const userGet = () => async (dispatch: any) => {
 
 export const profileUpdate = (data: any) => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });
-  await userService.profileUpdate(data)
+  await userService
+    .profileUpdate(data)
     .then(res => {
       if (res.status === 200) {
         res.json().then((result: any) => {
@@ -49,7 +51,7 @@ export const profileUpdate = (data: any) => async (dispatch: any) => {
           }, 3000);
         });
       } else {
-        history.push('/profile');
+        history.push("/profile");
       }
     })
     .catch(err => {

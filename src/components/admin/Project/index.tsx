@@ -1,5 +1,4 @@
 import React, { useEffect, useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProjects } from "../../../actions/project.action";
 import { getlookUpData } from "../../../actions/lookUpMaster.action";
@@ -34,7 +33,7 @@ const Project = (props: any) => {
   const [projectId, setprojectId] = useState(0);
   useEffect(() => {
     props.getlookUpData();
-    if (props.projectSkills != undefined && props.projectSkills.length > 0) {
+    if (props.projectSkills !== undefined && props.projectSkills.length > 0) {
       setprojectList(props.projectSkills);
     }
 
@@ -100,7 +99,7 @@ const Project = (props: any) => {
   ) => {
     item.IsChecked = !item.IsChecked;
     let projectSkillList = props.projectSkills.map((ps: any) =>
-      ps.id == item.id ? { ...item } : ps
+      ps.id === item.id ? { ...item } : ps
     );
     setprojectList(projectSkillList);
   };
@@ -110,7 +109,6 @@ const Project = (props: any) => {
   //     const projectSkill = projectSkillList
   //       .filter((ps: any) => ps.IsChecked)
   //       .map((ps: any) =>
-  //     debugger;
   //     props.upsertProjectSkills(projectSkill);
   //   }
   // };
@@ -119,7 +117,7 @@ const Project = (props: any) => {
     e: FormEvent<HTMLSelectElement>,
     item: any
   ) => {
-    if (item.ProjectSkillMapping == null) {
+    if (item.ProjectSkillMapping === null) {
       item.ProjectSkillMapping = {
         ProjectSkillID: 0,
         ProjectID: projectId,
@@ -132,7 +130,7 @@ const Project = (props: any) => {
       );
     }
     let projectSkillList = props.projectSkills.map((ps: any) =>
-      ps.id == item.id ? { ...item } : ps
+      ps.id === item.id ? { ...item } : ps
     );
     setprojectList(projectSkillList);
   };
@@ -142,7 +140,6 @@ const Project = (props: any) => {
       const projectSkill = projectSkillList
         .filter((ps: any) => ps.IsChecked)
         .map((ps: any) => ps.ProjectSkillMapping);
-      debugger;
       props.upsertProjectSkills(projectSkill);
     }
   };
@@ -227,7 +224,7 @@ const Project = (props: any) => {
                                     id="tableDefaultCheck1"
                                     checked={projectSkill.IsChecked}
                                     value={
-                                      projectSkill.ProjectSkillMapping !=
+                                      projectSkill.ProjectSkillMapping !==
                                         undefined &&
                                       projectSkill.ProjectSkillMapping
                                         .ProjectSkillID > 0
@@ -263,10 +260,10 @@ const Project = (props: any) => {
                                           key={proficiency.LookUpID}
                                           value={proficiency.LookUpID}
                                           selected={
-                                            projectSkill.ProjectSkillMapping !=
+                                            projectSkill.ProjectSkillMapping !==
                                               undefined &&
                                             projectSkill.ProjectSkillMapping
-                                              .LookUpProficiencyID ==
+                                              .LookUpProficiencyID ===
                                               proficiency.LookUpID
                                           }
                                         >
@@ -317,5 +314,5 @@ export default connect(mapStoreToProps, {
   getlookUpData,
   getProjects,
   getProjectSkills,
-  upsertProjectSkills,
+  upsertProjectSkills
 })(Project);

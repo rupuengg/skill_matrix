@@ -2,18 +2,11 @@ import React, { useEffect, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
-  getEmployeeSkills,
-  deleteEmployeeSkill,
-  getProjectDetailByEmployeeID
-} from "../../../actions/employee-skill.action";
-import {
-  getProjectSkills,
   getProjectSkillsByEmployeeID,
   saveEmployeeProjectDetails
 } from "../../../actions/projectSkill.action";
 import { getlookUpData } from "../../../actions/lookUpMaster.action";
 import { getProjects } from "../../../actions/project.action";
-import projectSkillService from "../../../services/projectSkill-service";
 
 const EmployeeSkill = (props: any) => {
   const initialValue = [
@@ -54,10 +47,10 @@ const EmployeeSkill = (props: any) => {
     setProjectSkillList(props.projectSkills);
   }, [props.projectSkills]);
 
-  const handleDelete = (e: FormEvent<HTMLAnchorElement>, skillId: number) => {
-    e.preventDefault();
-    props.deleteEmployeeSkill(skillId);
-  };
+  // const handleDelete = (e: FormEvent<HTMLAnchorElement>, skillId: number) => {
+  //   e.preventDefault();
+  //   props.deleteEmployeeSkill(skillId);
+  // };
   const handleChangeExperienceInMonths = (
     e: FormEvent<HTMLInputElement>,
     item: any
@@ -81,7 +74,7 @@ const EmployeeSkill = (props: any) => {
       item.employee_skill.exp_in_month = Number(e.currentTarget.value);
     }
     let projectSkillList = props.projectSkills.map((ps: any) =>
-      ps.id == item.id ? { ...item } : ps
+      ps.id === item.id ? { ...item } : ps
     );
     setProjectSkillList(projectSkillList);
   };
@@ -90,7 +83,6 @@ const EmployeeSkill = (props: any) => {
     item: any
   ) => {
     e.preventDefault();
-    debugger;
     if (item.employee_skill == null) {
       item.employee_skill = {
         id: item.id,
@@ -109,7 +101,7 @@ const EmployeeSkill = (props: any) => {
       item.employee_skill.ProficiencyID = Number(e.currentTarget.value);
     }
     let projectSkillList = props.projectSkills.map((ps: any) =>
-      ps.id == item.id ? { ...item } : ps
+      ps.id === item.id ? { ...item } : ps
     );
     setProjectSkillList(projectSkillList);
   };
@@ -213,7 +205,7 @@ const EmployeeSkill = (props: any) => {
                                     {projectSkillList.length > 0 &&
                                       projectSkillList.map(
                                         (projectSkill: any) =>
-                                          projectSkill.ProjectSkillMapping !=
+                                          projectSkill.ProjectSkillMapping !==
                                             undefined && (
                                             <tr
                                               className="odd"
@@ -253,11 +245,11 @@ const EmployeeSkill = (props: any) => {
                                                           proficiency.LookUpID
                                                         }
                                                         selected={
-                                                          projectSkill.ProjectSkillMapping !=
+                                                          projectSkill.ProjectSkillMapping !==
                                                             undefined &&
                                                           projectSkill
                                                             .ProjectSkillMapping
-                                                            .LookUpProficiencyID ==
+                                                            .LookUpProficiencyID ===
                                                             proficiency.LookUpID
                                                         }
                                                       >
@@ -296,11 +288,11 @@ const EmployeeSkill = (props: any) => {
                                                           proficiency.LookUpID
                                                         }
                                                         selected={
-                                                          projectSkill.employee_skill !=
+                                                          projectSkill.employee_skill !==
                                                             undefined &&
                                                           projectSkill
                                                             .employee_skill
-                                                            .ProficiencyID ==
+                                                            .ProficiencyID ===
                                                             proficiency.LookUpID
                                                         }
                                                       >
@@ -398,7 +390,7 @@ const EmployeeSkill = (props: any) => {
                                     {projectSkillList.length > 0 &&
                                       projectSkillList.map(
                                         (projectSkill: any) =>
-                                          projectSkill.ProjectSkillMapping ==
+                                          projectSkill.ProjectSkillMapping ===
                                             undefined &&
                                           projectSkill.employee_skill !=
                                             null && (
@@ -437,7 +429,7 @@ const EmployeeSkill = (props: any) => {
                                                             null &&
                                                           projectSkill
                                                             .employee_skill
-                                                            .ProficiencyID ==
+                                                            .ProficiencyID ===
                                                             proficiency.LookUpID
                                                         }
                                                       >
@@ -447,7 +439,7 @@ const EmployeeSkill = (props: any) => {
                                                 </select>
                                               </td>
                                               <td>
-                                                {projectSkill.employee_skill !=
+                                                {projectSkill.employee_skill !==
                                                   undefined}
                                                 {
                                                   <input

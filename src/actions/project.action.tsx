@@ -1,14 +1,6 @@
 import projectService from "../services/project-service";
 import { SPINNER_SHOW, SPINNER_HIDE } from "../actiontypes/spinner";
-import {
-  PROJECT_LIST,
-  PROJECT_NO_DATA,
-  PROJECT_ADD,
-  PROJECT_EDIT,
-  PROJECT_DELETE
-} from "../actiontypes/project";
-import { FLASH_SHOW, FLASH_HIDE } from "../actiontypes/flash";
-import { history } from "../helpers/history";
+import { PROJECT_LIST, PROJECT_NO_DATA } from "../actiontypes/project";
 
 export const getProjects = (clientId: number) => async (dispatch: any) => {
   dispatch({ type: SPINNER_SHOW });

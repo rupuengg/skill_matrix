@@ -25,7 +25,6 @@ const getProjectSkillsByEmployeeID = async (projectId: number) => {
 };
 
 const saveEmployeeProjectDetails = async (data: any) => {
-  debugger;
   const request: Request = reqOptions(
     `http://localhost:8080/api/1.0/employeeProjectDetails/`,
     "POST",
@@ -36,10 +35,9 @@ const saveEmployeeProjectDetails = async (data: any) => {
     .then((res: any) => {
       return res;
     });
-  };
-  
+};
+
 const upsertProjectSkills = async (projectSkills: any) => {
-  debugger;
   const request: Request = reqOptions(
     `http://localhost:8080/api/1.0/projectSkill`,
     "POST",
@@ -54,7 +52,7 @@ const projectSkillService = {
   getProjectSkills,
   getProjectSkillsByEmployeeID,
   saveEmployeeProjectDetails,
-  upsertProjectSkills,
+  upsertProjectSkills
 };
 
 export default projectSkillService;
