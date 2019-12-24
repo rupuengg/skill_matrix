@@ -12,6 +12,7 @@ const getProjects = async (clientId: number) => {
       return res;
     });
 };
+
 const getProjectsByEmployeeID = async () => {
   const request: Request = reqOptions(
     `http://localhost:8080/api/1.0/employeeProjectDetails/3`,
@@ -84,7 +85,7 @@ const getProjectsByEmployeeID = async () => {
 
 const projectService = {
   getProjects,
-  getProjectsByEmployeeID
+  getProjectsByEmployeeID,
   // getSkill,
   // createSkill,
   // updateSkill,

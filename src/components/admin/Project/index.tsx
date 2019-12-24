@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProjects } from "../../../actions/project.action";
 import { getlookUpData } from "../../../actions/lookUpMaster.action";
-// import { getSkills, deleteSkill } from "../../../actions/skill.action";
-import { getProjectSkills } from "../../../actions/projectSkill.action";
+import {
+  getProjectSkills,
+  upsertProjectSkills
+} from "../../../actions/projectSkill.action";
 
 interface IProjectSkill {
-  id: number;
-  skill_name: string;
-  ProjectSkillMapping: {
-    ProjectSkillID: number;
-    ProjectID: number;
-    SkillID: number;
-    LookUpProficiencyID: number;
-  };
+  ProjectSkillID: number;
+  ProjectID: number;
+  SkillID: number;
+  LookUpProficiencyID: number;
 }
 
 const Project = (props: any) => {
@@ -22,19 +20,63 @@ const Project = (props: any) => {
     {
       id: 0,
       skill_name: "",
+      IsChecked: false,
       ProjectSkillMapping: {
-        ProjectSkillID: "",
-        ProjectID: "",
-        SkillID: "",
-        LookUpProficiencyID: ""
+        ProjectSkillID: 0,
+        ProjectID: 0,
+        SkillID: 0,
+        LookUpProficiencyID: 0
       }
     }
   ];
   const [projectSkillList, setprojectList] = useState(initialValue);
+  // const [saveStatus, setSaveStatus] = useState(true);
+  const [projectId, setprojectId] = useState(0);
   useEffect(() => {
     props.getlookUpData();
-    setprojectList(props.projectSkills);
-  });
+    if (props.projectSkills != undefined && props.projectSkills.length > 0) {
+      setprojectList(props.projectSkills);
+    }
+
+    // if (props.projectSkills.length) {
+    //   const projectSkill = props.projectSkills
+    //     .filter((ps: any) => ps.IsChecked)
+    //     .map((ps: any) => ps.ProjectSkillMapping);
+    //   setsaveList(projectSkill);
+    // }
+
+    //   const projectSkill = props.projectSkills
+    //     .filter((ps: any) => ps.ProjectSkillMapping != undefined)
+    //     .map((ps: any) => ps.ProjectSkillMapping);
+
+    //   setprojectList(projectSkill);
+    // }
+
+    // if (projectSkill.length > 0) {
+    //   alert(projectSkill[0].ProjectSkillID);
+    // }
+
+    // if (
+    //   projectSkillList != undefined &&
+    //   projectSkillList.length > 0 &&
+    //   projectSkillList[0].ProjectSkillMapping.LookUpProficiencyID > "0"
+    // )
+    //   alert(
+    //     "Project Details" +
+    //       projectSkillList[0].ProjectSkillMapping.LookUpProficiencyID
+    //   );
+  }, [props.projectSkills]);
+
+  // if (props.projectSkills.length > 0) {
+  //   const projectSkill1 = props.projectSkills.map((ps: any) => {
+  //     if (ps.ProjectSkillMapping != undefined) {
+  //       ps.IsChecked = true;
+  //     } else {
+  //       ps.IsChecked = false;
+  //     }
+  //     return ps;
+  //   });
+  // }
   const handleClientChange = (
     e: FormEvent<HTMLSelectElement>,
     clientId: number
@@ -49,9 +91,61 @@ const Project = (props: any) => {
   ) => {
     e.preventDefault();
     props.getProjectSkills(projectId);
+    setprojectId(projectId);
   };
 
-  const handleCheckedChange = (e: FormEvent<HTMLInputElement>) => {};
+  const handleSkillCheckedChange = (
+    e: FormEvent<HTMLInputElement>,
+    item: any
+  ) => {
+    item.IsChecked = !item.IsChecked;
+    let projectSkillList = props.projectSkills.map((ps: any) =>
+      ps.id == item.id ? { ...item } : ps
+    );
+    setprojectList(projectSkillList);
+  };
+
+  // const checkSaveStatus =()=> {
+  //   if (projectSkillList.length) {
+  //     const projectSkill = projectSkillList
+  //       .filter((ps: any) => ps.IsChecked)
+  //       .map((ps: any) =>
+  //     debugger;
+  //     props.upsertProjectSkills(projectSkill);
+  //   }
+  // };
+
+  const handleProficiencyChange = (
+    e: FormEvent<HTMLSelectElement>,
+    item: any
+  ) => {
+    if (item.ProjectSkillMapping == null) {
+      item.ProjectSkillMapping = {
+        ProjectSkillID: 0,
+        ProjectID: projectId,
+        SkillID: item.id,
+        LookUpProficiencyID: Number(e.currentTarget.value)
+      };
+    } else {
+      item.ProjectSkillMapping.LookUpProficiencyID = Number(
+        e.currentTarget.value
+      );
+    }
+    let projectSkillList = props.projectSkills.map((ps: any) =>
+      ps.id == item.id ? { ...item } : ps
+    );
+    setprojectList(projectSkillList);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+    if (projectSkillList.length) {
+      const projectSkill = projectSkillList
+        .filter((ps: any) => ps.IsChecked)
+        .map((ps: any) => ps.ProjectSkillMapping);
+      debugger;
+      props.upsertProjectSkills(projectSkill);
+    }
+  };
 
   return (
     <div>
@@ -123,57 +217,68 @@ const Project = (props: any) => {
                           </tr>
                         </thead>
                         <tbody>
-                          {projectSkillList.map((projectSkill: any) => (
-                            <tr className="odd" key={projectSkill.id}>
-                              <td className="sorting_1">
-                                <input
-                                  className="m-3"
-                                  type="checkbox"
-                                  id="tableDefaultCheck1"
-                                  checked={
-                                    projectSkill.ProjectSkillMapping !=
-                                      undefined &&
-                                    projectSkill.ProjectSkillMapping
-                                      .ProjectSkillID > 0
-                                  }
-                                />
-                                {projectSkill.skill_name}
-                              </td>
-                              <td>
-                                <select
-                                  className="form-control col-sm-4"
-                                  id="selectProficiency"
-                                >
-                                  <option
-                                    value=""
-                                    label="Select Proficiency"
-                                  ></option>
-                                  {props.lookUpList
-                                    .filter(
-                                      (proficiency: any) =>
-                                        proficiency.Type === "Proficiency"
-                                    )
-                                    .map((proficiency: any) => (
-                                      <option
-                                        key={proficiency.LookUpID}
-                                        value={proficiency.LookUpID}
-                                        selected={
-                                          projectSkill.ProjectSkillMapping !=
-                                            undefined &&
-                                          projectSkill.ProjectSkillMapping
-                                            .LookUpProficiencyID ==
-                                            proficiency.LookUpID
-                                        }
-                                      >
-                                        {proficiency.Value}
-                                      </option>
-                                    ))}
-                                </select>
-                              </td>
-                            </tr>
-                          ))}
+                          {props.projectSkills.length > 0 &&
+                            projectSkillList.map((projectSkill: any) => (
+                              <tr className="odd" key={projectSkill.id}>
+                                <td className="sorting_1">
+                                  <input
+                                    className="m-3"
+                                    type="checkbox"
+                                    id="tableDefaultCheck1"
+                                    checked={projectSkill.IsChecked}
+                                    value={
+                                      projectSkill.ProjectSkillMapping !=
+                                        undefined &&
+                                      projectSkill.ProjectSkillMapping
+                                        .ProjectSkillID > 0
+                                        ? projectSkill.ProjectSkillMapping
+                                            .ProjectSkillID
+                                        : 0
+                                    }
+                                    onChange={e =>
+                                      handleSkillCheckedChange(e, projectSkill)
+                                    }
+                                  />
+                                  {projectSkill.skill_name}
+                                </td>
+                                <td>
+                                  <select
+                                    className="form-control col-sm-4"
+                                    id="selectProficiency"
+                                    onChange={e =>
+                                      handleProficiencyChange(e, projectSkill)
+                                    }
+                                  >
+                                    <option
+                                      value=""
+                                      label="Select Proficiency"
+                                    ></option>
+                                    {props.lookUpList
+                                      .filter(
+                                        (proficiency: any) =>
+                                          proficiency.Type === "Proficiency"
+                                      )
+                                      .map((proficiency: any) => (
+                                        <option
+                                          key={proficiency.LookUpID}
+                                          value={proficiency.LookUpID}
+                                          selected={
+                                            projectSkill.ProjectSkillMapping !=
+                                              undefined &&
+                                            projectSkill.ProjectSkillMapping
+                                              .LookUpProficiencyID ==
+                                              proficiency.LookUpID
+                                          }
+                                        >
+                                          {proficiency.Value}
+                                        </option>
+                                      ))}
+                                  </select>
+                                </td>
+                              </tr>
+                            ))}
 
-                          {!projectSkillList.length && (
+                          {!props.projectSkills.length && (
                             <tr>
                               <td colSpan={5}>No records found</td>
                             </tr>
@@ -188,8 +293,10 @@ const Project = (props: any) => {
           </div>
         </div>
         <button
+          type="button"
           className="btn btn-primary ml-3 float-right"
-          // onClick={() => this.deleteUser(item.id)}
+          //disabled={!props.projectSkills.length || !saveStatus}
+          onClick={e => handleSubmit(e)}
         >
           Save
         </button>
@@ -209,5 +316,6 @@ const mapStoreToProps = (store: any) => {
 export default connect(mapStoreToProps, {
   getlookUpData,
   getProjects,
-  getProjectSkills
+  getProjectSkills,
+  upsertProjectSkills,
 })(Project);

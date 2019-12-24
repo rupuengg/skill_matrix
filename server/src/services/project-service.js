@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const projectDao = require("../dao/project-dao");
 const userDao = require("../dao/user-dao");
 const employeeProjectDetailsDao = require("../dao/employeeProjectDetails-dao");
+const projectDao = require("../dao/project-dao");
 
 // const createSkill = async (data) => {
 //   const emp = await projectDao.createSkill(data);
@@ -45,7 +46,7 @@ const getProjectsByID = async employeeId => {
 const projectService = {
   // createSkill,
   getProjects,
-  getProjectsByID
+  getProjectsByID,
   // getSkill,
   // deleteSkill,
   // updateSkill

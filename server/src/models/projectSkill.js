@@ -4,11 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       ProjectSkillID: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       ProjectID: DataTypes.INTEGER,
       SkillID: DataTypes.INTEGER,
-      LookUpProficiencyID: DataTypes.INTEGER
+      LookUpProficiencyID: DataTypes.INTEGER,
+      CreatedBy: DataTypes.INTEGER
     },
     { freezeTableName: true, timestamps: false }
   );

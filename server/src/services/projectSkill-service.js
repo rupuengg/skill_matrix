@@ -14,9 +14,16 @@ const getProjectSkillsByEmpID = async projectId => {
   return emps;
 };
 
+const upsertProjectSkills = async projectSkills => {
+  const emp = await projectSkillDao.upsertProjectSkills(projectSkills);
+  // const emp = "pooja";
+  return emp;
+};
+
 const projectSkillService = {
   getProjectSkills,
-  getProjectSkillsByEmpID
+  getProjectSkillsByEmpID,
+  upsertProjectSkills,
 };
 
 module.exports = projectSkillService;

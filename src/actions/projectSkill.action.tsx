@@ -7,6 +7,10 @@ import {
 import { FLASH_SHOW, FLASH_HIDE } from "../actiontypes/flash";
 import { history } from "../helpers/history";
 import { EMPLOYEE_SKILL_ADD } from "../actiontypes/employee.skill";
+import {
+  PROJECT_SKILL_NO_DATA,
+  PROJECT_SKILL_UPSERT
+} from "../actiontypes/projectSkill";
 
 export const getProjectSkills = (projectId: number) => async (
   dispatch: any
@@ -69,4 +73,32 @@ export const saveEmployeeProjectDetails = (data: any) => async (
     }
     dispatch({ type: SPINNER_HIDE });
   });
+};
+
+export const upsertProjectSkills = (projectSkills: any) => async (
+  dispatch: any
+) => {
+  debugger;
+  dispatch({ type: SPINNER_SHOW });
+  await projectSkillService
+    .upsertProjectSkills(projectSkills)
+    .then(res => {
+      if (res.status === 200) {
+        res.json().then((result: any) => {
+          dispatch({
+            type: PROJECT_SKILL_UPSERT,
+            payload: result.status
+          });
+          history.push("/projects");
+          dispatch({ type: FLASH_SHOW, payload: result.status });
+          setTimeout(() => {
+            dispatch({ type: FLASH_HIDE, payload: "" });
+          }, 3000);
+        });
+      }
+      dispatch({ type: SPINNER_HIDE });
+    })
+    .catch(err => {
+      console.log();
+    });
 };

@@ -1,5 +1,6 @@
 const projectSkillService = require("../services/projectSkill-service");
 const { OK, SERVER_ERROR } = require("../constants/httpConstant");
+const { PROJECTSKILL } = require("../constants/msgConstant");
 
 const getProjectSkills = async (req, res) => {
   try {
@@ -23,9 +24,20 @@ const getProjectSkillsByEmpID = async (req, res) => {
   }
 };
 
+const upsertProjectSkills = async (req, res) => {
+  try {
+    const emp = await projectSkillService.upsertProjectSkills(req.body);
+    // const emp = "Pooja";
+    return res.status(OK).json({ status: PROJECTSKILL.SAVED, data: emp });
+  } catch (err) {
+    return res.status(err.status || SERVER_ERROR).json(err);
+  }
+};
+
 const projectSkillController = {
   getProjectSkills,
-  getProjectSkillsByEmpID
+  getProjectSkillsByEmpID,
+  upsertProjectSkills,
 };
 
 module.exports = projectSkillController;
