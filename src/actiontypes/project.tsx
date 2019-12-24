@@ -1,0 +1,6 @@
+export const PROJECT_LIST = "PROJECT_LIST";
+export const PROJECT_NO_DATA = "PROJECT_NO_DATA";
+export const PROJECT_ADD = "PROJECT_ADD";
+export const PROJECT_EDIT = "PROJECT_EDIT";
+export const PROJECT_UPDATE = "PROJECT_UPDATE";
+export const PROJECT_DELETE = "PROJECT_DELETE";
