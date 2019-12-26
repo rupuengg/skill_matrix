@@ -42,24 +42,37 @@ const projectDao = {
   //   });
   //   return emp;
   // };
-
-  // const deleteProject = async filters => {
-  //   const emp = await projectModel.destroy({
-  //     where: filters
-  //   });
-  //   return emp;
-  // };
-
-  // const updateProject = async (data, filters) => {
-  //   const emp = await projectModel.update(data, { where: filters });
-  //   return emp[0];
-  // };
-
-  // createProject,
-  // getProject,
-  // deleteProject,
-  //updateProject
-  // getDetails
 };
+// const getDetails = async (filters) => {
+//   const emps = await projectModel.findAll({
+//     where: filters,
+//     order: [['id', 'DESC']]
+//   });
+//   return emps;
+// }
+// const getProject = async filters => {
+//   const emp = await projectModel.findOne({
+//     where: filters
+//   });
+//   return emp;
+// };
+
+// const deleteProject = async filters => {
+//   const emp = await projectModel.destroy({
+//     where: filters
+//   });
+//   return emp;
+// };
+
+// const updateProject = async (data, filters) => {
+//   const emp = await projectModel.update(data, { where: filters });
+//   return emp[0];
+// };
+
+// createProject,
+// getProject,
+// deleteProject,
+//updateProject
+// getDetails
 
 module.exports = projectDao;

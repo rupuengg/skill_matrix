@@ -1,6 +1,7 @@
 import { reqOptions } from "../helpers/common";
 
 const getProjectSkills = async (projectId: number) => {
+  debugger;
   const request: Request = reqOptions(
     `http://localhost:8080/api/1.0/projectSkill/${projectId}`,
     "GET"

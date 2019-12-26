@@ -14,6 +14,7 @@ export const getProjectSkills = (projectId: number) => async (
 ) => {
   dispatch({ type: SPINNER_SHOW });
   await projectSkillService.getProjectSkills(projectId).then(res => {
+    debugger;
     if (res.data.length > 0) {
       dispatch({
         type: PROJECT_SKILL_LIST,
