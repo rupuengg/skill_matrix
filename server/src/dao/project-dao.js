@@ -1,4 +1,4 @@
-const projectModel = require("../models").ProjectDetails;
+const projectModel = require("../models").project_details;
 const EmployeeProjectDetailsModel = require("../models").EmployeeProjectDetails;
 
 // const createProject = async data => {
@@ -9,7 +9,7 @@ const EmployeeProjectDetailsModel = require("../models").EmployeeProjectDetails;
 const getProjects = async filters => {
   const emps = await projectModel.findAll({
     where: filters,
-    order: [["ProjectID", "ASC"]]
+    order: [["id", "ASC"]]
   });
 
   return emps;
@@ -18,7 +18,7 @@ const getProjects = async filters => {
 const getProjectsByID = async filters => {
   const emps = await EmployeeProjectDetailsModel.findAll({
     where: filters,
-    order: [["ProjectID", "ASC"]]
+    order: [["id", "ASC"]]
   });
 
   return emps;

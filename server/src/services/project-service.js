@@ -9,7 +9,7 @@ const userDao = require("../dao/user-dao");
 // };
 
 const getProjects = async clientId => {
-  const projects = await projectDao.getProjects({ LookUpClientID: clientId });
+  const projects = await projectDao.getProjects({ lookup_client_id: clientId });
   return projects;
 };
 

@@ -1,48 +1,44 @@
-'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ProjectDetails', {
+    return queryInterface.createTable("project_details", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ProjectID: {
-        type: Sequelize.INTEGER
-      },
-      ProjectName: {
+      project_name: {
         type: Sequelize.STRING
       },
-      LookUpClientID: {
+      lookup_client_id: {
         type: Sequelize.INTEGER
       },
-      LastModifiedOn: {
+      lastmodified_on: {
         type: Sequelize.DATE
       },
-      LastModifiedBy: {
+      lastmodified_by: {
         type: Sequelize.INTEGER
       },
-      CreatedOn: {
+      created_on: {
         type: Sequelize.DATE
       },
-      CreatedBy: {
+      created_by: {
         type: Sequelize.INTEGER
       },
-      IsActive: {
+      is_active: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ProjectDetails');
+    return queryInterface.dropTable("project_details");
   }
 };

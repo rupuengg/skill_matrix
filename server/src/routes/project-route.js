@@ -1,11 +1,5 @@
 const express = require("express");
-const validate = require("express-validation");
 const router = express.Router();
-
-const {
-  authenticate,
-  catchValidationErrors
-} = require("../middlewares/auth-validator");
 
 // const { projectValidator } = require("../validations/project-validator");
 
